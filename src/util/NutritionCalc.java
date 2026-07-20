@@ -1,4 +1,4 @@
-package nutrition;
+package util;
 
 public class NutritionCalc {
 

@@ -1,4 +1,4 @@
-package nutrition;
+package model;
 
 public class NutritionResults {
     private final double bmr;
