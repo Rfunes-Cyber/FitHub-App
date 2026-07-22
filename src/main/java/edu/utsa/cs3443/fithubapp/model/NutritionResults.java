@@ -1,4 +1,4 @@
-package model;
+package edu.utsa.cs3443.fithubapp.model;
 
 public class NutritionResults {
     private final double bmr;

@@ -1,4 +1,4 @@
-package util;
+package edu.utsa.cs3443.fithubapp.util;
 
 public class NutritionCalc {
 
