@@ -29,6 +29,7 @@ public class NutritionResults {
         return proteinGrams;
     }
     public double getCarbohydrateGrams() {
-        return fatGrams;
+        return carbohydrateGrams;
     }
+    public double getFatGrams() { return fatGrams; }
 }
