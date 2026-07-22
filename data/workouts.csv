@@ -1,9 +1,12 @@
-workoutName,exerciseName
-Push Day,Bench Press
-Push Day,Shoulder Press
-Push Day,Tricep Pushdown
-Pull Day,Pull Ups
-Pull Day,Barbell Row
-Pull Day,Bicep Curl
-Leg Day,Squat
-Leg Day,Leg Curl
+WorkoutName,ExerciseName,MuscleGroup,DefaultSets,DefaultReps
+Push Day,Bench Press,Chest,3,12
+Push Day,Incline Dumbbell Press,Chest,3,12
+Push Day,Shoulder Press,Shoulders,3,12
+Push Day,Tricep Pushdown,Arms,3,12
+Pull Day,Pull Ups,Back,3,8
+Pull Day,Barbell Row,Back,3,8
+Pull Day,Bicep Curl,Arms,3,12
+Leg Day,Squat,Legs,4,8
+Leg Day,Deadlift,Back,3,6
+Leg Day,Leg Curl,Legs,3,12
+Cardio,Running,Cardio,1,30
