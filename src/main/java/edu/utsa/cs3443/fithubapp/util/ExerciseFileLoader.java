@@ -1,4 +1,6 @@
-package workout;
+package edu.utsa.cs3443.fithubapp.util;
+
+import edu.utsa.cs3443.fithubapp.model.Exercise;
 
 import java.io.BufferedReader;
 import java.io.IOException;

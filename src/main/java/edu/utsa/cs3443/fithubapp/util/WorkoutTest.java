@@ -1,4 +1,7 @@
-package workout;
+package edu.utsa.cs3443.fithubapp.util;
+
+import edu.utsa.cs3443.fithubapp.model.Exercise;
+import edu.utsa.cs3443.fithubapp.model.Workout;
 
 import java.util.ArrayList;
 
