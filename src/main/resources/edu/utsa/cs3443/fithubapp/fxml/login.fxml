@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="960.0" prefWidth="540.0"
+ xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+ fx:controller="edu.utsa.cs3443.fithubapp.controller.LoginController">
+    <children>
+        <ImageView fitHeight="960" fitWidth="540" preserveRatio="false">
+            <image><Image url="@../images/login-background.png"/></image>
+        </ImageView>
+
+        <!-- FitHub Logo -->
+
+        <HBox
+                layoutX="40"
+                layoutY="28"
+                spacing="0"
+                alignment="CENTER_LEFT">
+
+            <Text
+                    text="Fit"
+                    styleClass="fit-logo"/>
+
+            <Text
+                    text="Hub"
+                    styleClass="hub-logo"/>
+
+        </HBox>
+
+        <TextField fx:id="usernameField"
+                   layoutX="112" layoutY="181"
+                   prefHeight="46" prefWidth="336"
+                   promptText="User Name"
+                   styleClass="auth-field"/>
+
+        <PasswordField fx:id="passwordField"
+                       layoutX="112" layoutY="269"
+                       prefHeight="46" prefWidth="336"
+                       promptText="Password"
+                       styleClass="auth-field"/>
+
+        <CheckBox layoutX="199" layoutY="350"
+                  text="Remember Me"
+                  styleClass="remember-box"/>
+
+        <Button layoutX="120" layoutY="434"
+                prefHeight="45" prefWidth="315"
+                text="Log in"
+                onAction="#handleLogin"
+                styleClass="primary-button"/>
+
+        <Button layoutX="193" layoutY="507"
+                text="Forgot Password?"
+                onAction="#openPasswordReset"
+                styleClass="link-button"/>
+
+        <Label layoutX="212"
+               layoutY="622"
+               text="New to FitHub?"
+               styleClass="plain-white-label"/>
+
+        <Button layoutX="140"
+                layoutY="655"
+                prefWidth="260"
+                prefHeight="42"
+                text="Create Account"
+                onAction="#openCreateAccount"
+                styleClass="secondary-button"/>
+
+        <Label fx:id="messageLabel"
+               alignment="CENTER"
+               layoutX="70" layoutY="704"
+               prefWidth="400"
+               wrapText="true"
+               styleClass="message-label"/>
+    </children>
+</AnchorPane>
