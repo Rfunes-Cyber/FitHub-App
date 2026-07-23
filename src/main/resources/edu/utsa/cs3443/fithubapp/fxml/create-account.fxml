@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="960.0"
+            prefWidth="540.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.utsa.cs3443.fithubapp.controller.CreateAccountController">
+
+    <children>
+
+        <ImageView fitHeight="960"
+                   fitWidth="540"
+                   preserveRatio="false">
+            <image>
+                <Image url="@../images/create-background.png"/>
+            </image>
+        </ImageView>
+
+        <HBox
+                layoutX="45"
+                layoutY="30"
+                alignment="CENTER_LEFT">
+
+            <Text text="Fit"
+                  styleClass="fit-logo"/>
+
+            <Text text="Hub"
+                  styleClass="hub-logo"/>
+
+        </HBox>
+
+        <!-- Username -->
+
+        <TextField fx:id="usernameField"
+                   layoutX="110"
+                   layoutY="392"
+                   prefHeight="45"
+                   prefWidth="336"
+                   promptText="User Name"
+                   styleClass="auth-field"/>
+
+        <!-- Password -->
+
+        <PasswordField fx:id="passwordField"
+                       layoutX="110"
+                       layoutY="471"
+                       prefHeight="45"
+                       prefWidth="336"
+                       promptText="Create Password"
+                       styleClass="auth-field"/>
+
+        <!-- Verify -->
+
+        <PasswordField fx:id="verifyPasswordField"
+                       layoutX="110"
+                       layoutY="551"
+                       prefHeight="45"
+                       prefWidth="336"
+                       promptText="Verify Password"
+                       styleClass="auth-field"/>
+
+        <!-- Create Account Button -->
+
+        <Button layoutX="121"
+                layoutY="662"
+                prefHeight="45"
+                prefWidth="314"
+                text="Create Account"
+                onAction="#handleCreateAccount"
+                styleClass="primary-button"/>
+
+        <!-- Already Have an Account -->
+
+        <Label layoutX="120"
+               layoutY="778"
+               prefWidth="300"
+               alignment="CENTER"
+               text="Already Have an Account?"
+               styleClass="plain-white-label"/>
+
+        <!-- Login -->
+
+        <Button layoutX="120"
+                layoutY="804"
+                prefWidth="300"
+                prefHeight="30"
+                text="Login Here"
+                onAction="#returnToLogin"
+                styleClass="link-button"/>
+
+        <!-- Error / Success -->
+
+        <Label fx:id="messageLabel"
+               layoutX="90"
+               layoutY="845"
+               prefWidth="360"
+               alignment="CENTER"
+               wrapText="true"
+               styleClass="message-label"/>
+
+    </children>
+
+</AnchorPane>

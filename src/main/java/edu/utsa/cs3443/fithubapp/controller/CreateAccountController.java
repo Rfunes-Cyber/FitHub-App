@@ -6,32 +6,31 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
 
-public class LoginController {
+public class CreateAccountController {
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
+    @FXML private PasswordField verifyPasswordField;
     @FXML private Label messageLabel;
 
-    @FXML private void handleLogin() {
+    @FXML private void handleCreateAccount() {
         String u = usernameField.getText();
         String p = passwordField.getText();
-        if (u == null || u.isBlank() || p == null || p.isBlank()) {
-            error("Enter both your username and password."); return;
-        }
+        String v = verifyPasswordField.getText();
+
+        if (u == null || u.isBlank()) { error("Choose a username."); return; }
+        if (p == null || p.length() < 6) { error("Password must contain at least 6 characters."); return; }
+        if (!p.equals(v)) { error("The passwords do not match."); return; }
+
         try {
-            if (!AccountStore.accountExists()) error("No account exists yet. Select Create Account.");
-            else if (AccountStore.authenticate(u, p)) success("Login successful.");
-            else error("Incorrect username or password.");
+            AccountStore.createAccount(u, p);
+            success("Account created. You can now log in.");
         } catch (IOException e) {
-            error("Could not read the local account.");
+            error("Could not save the account.");
         }
     }
 
-    @FXML private void openCreateAccount() throws IOException {
-        FitHubApplication.showScreen("create-account.fxml");
-    }
-
-    @FXML private void openPasswordReset() throws IOException {
-        FitHubApplication.showScreen("password-reset.fxml");
+    @FXML private void returnToLogin() throws IOException {
+        FitHubApplication.showScreen("login.fxml");
     }
 
     private void error(String s) {

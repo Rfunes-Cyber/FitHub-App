@@ -1,0 +1,144 @@
+.root {
+    -fx-font-family: "Arial";
+}
+
+.auth-field {
+    -fx-background-color: white;
+    -fx-background-radius: 24;
+    -fx-border-color: #d7d7d7;
+    -fx-border-radius: 24;
+    -fx-border-width: 1;
+    -fx-padding: 0 16 0 16;
+    -fx-font-size: 14px;
+    -fx-text-fill: #111111;
+    -fx-prompt-text-fill: #202020;
+}
+
+.auth-field:focused {
+    -fx-border-color: #168cf2;
+    -fx-border-width: 2;
+}
+
+.primary-button {
+    -fx-background-color: #198cf2;
+    -fx-background-radius: 24;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #087ee2;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #066fc7;
+}
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #008cff;
+    -fx-font-size: 16px;
+    -fx-padding: 4;
+    -fx-cursor: hand;
+}
+
+.link-button:hover {
+    -fx-underline: true;
+}
+
+.italic-link {
+    -fx-font-style: italic;
+}
+
+.remember-box {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 2 8 2 3;
+    -fx-font-size: 16px;
+    -fx-text-fill: #202020;
+}
+
+.remember-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #777777;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}
+
+.remember-box:selected .mark {
+    -fx-background-color: #168cf2;
+}
+
+.plain-white-label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight:bold;
+}
+
+.message-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.error-message {
+    -fx-text-fill: #ff6565;
+}
+
+.success-message {
+    -fx-text-fill: #56e37a;
+}
+.secondary-button{
+
+    -fx-background-color: transparent;
+
+    -fx-border-color: #2FA8FF;
+
+    -fx-border-width:2;
+
+    -fx-border-radius:24;
+
+    -fx-background-radius:24;
+
+    -fx-text-fill:#2FA8FF;
+
+    -fx-font-size:16px;
+
+    -fx-font-weight:bold;
+
+    -fx-cursor:hand;
+
+}
+
+.secondary-button:hover{
+
+    -fx-background-color: rgba(47,168,255,.12);
+
+}
+
+.secondary-button:pressed{
+
+    -fx-background-color: rgba(47,168,255,.22);
+
+}
+
+.fit-logo {
+
+    -fx-fill: #1E90FF;
+
+    -fx-font-size: 34px;
+
+    -fx-font-weight: bold;
+
+}
+
+.hub-logo {
+
+    -fx-fill: white;
+
+    -fx-font-size: 34px;
+
+    -fx-font-weight: bold;
+
+}
