@@ -1,0 +1,29 @@
+WorkoutName,ExerciseName,MuscleGroup,EquipmentType,DefaultSets,DefaultReps
+Push Day,Bench Press,Chest,Gym,3,12
+Push Day,Incline Dumbbell Press,Chest,Gym,3,12
+Push Day,Push Ups,Chest,Home,3,12
+Push Day,Wide Push Ups,Chest,Home,3,10
+Push Day,Shoulder Press,Shoulders,Gym,3,12
+Push Day,Lateral Raise,Shoulders,Gym,3,12
+Push Day,Pike Push Ups,Shoulders,Home,3,10
+Push Day,Arm Circles,Shoulders,Home,3,15
+Push Day,Tricep Pushdown,Arms,Gym,3,12
+Push Day,Dumbbell Bicep Curl,Arms,Gym,3,12
+Push Day,Chair Dips,Arms,Home,3,10
+Push Day,Diamond Push Ups,Arms,Home,3,10
+Pull Day,Pull Ups,Back,Both,3,8
+Pull Day,Barbell Row,Back,Gym,3,8
+Pull Day,Lat Pulldown,Back,Gym,3,10
+Pull Day,Seated Cable Row,Back,Gym,3,10
+Pull Day,Superman Raises,Back,Home,3,12
+Pull Day,Reverse Snow Angels,Back,Home,3,12
+Leg Day,Squat,Legs,Gym,4,8
+Leg Day,Leg Press,Legs,Gym,3,10
+Leg Day,Leg Curl,Legs,Gym,3,12
+Leg Day,Bodyweight Squat,Legs,Home,4,12
+Leg Day,Walking Lunges,Legs,Both,3,12
+Leg Day,Glute Bridges,Legs,Home,3,15
+Core Day,Crunches,Core,Both,3,15
+Core Day,Sit Ups,Core,Both,3,12
+Core Day,Russian Twists,Core,Both,3,20
+Core Day,Plank Shoulder Taps,Core,Both,3,20
