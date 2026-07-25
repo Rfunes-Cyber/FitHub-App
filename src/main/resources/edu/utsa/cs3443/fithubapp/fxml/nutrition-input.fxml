@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="960.0" prefWidth="540.0"
+            stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.utsa.cs3443.fithubapp.controller.NutritionController">
+    <fx:define>
+        <ToggleGroup fx:id="genderGroup"/>
+    </fx:define>
+
+    <ImageView fitHeight="960" fitWidth="540" preserveRatio="false">
+        <image><Image url="@../images/nutrition-background.jpeg"/></image>
+    </ImageView>
+    <AnchorPane prefHeight="960" prefWidth="540" styleClass="nutrition-overlay"/>
+
+    <Text layoutX="88" layoutY="72" text="Welcome to " styleClass="nutrition-welcome"/>
+    <Text layoutX="285" layoutY="72" text="FitHub!" styleClass="nutrition-brand"/>
+    <Label layoutX="123" layoutY="88" text="Please enter your information below" styleClass="nutrition-subtitle-strong"/>
+
+    <HBox layoutX="86" layoutY="184" prefWidth="368" alignment="CENTER_LEFT" spacing="14" styleClass="underlined-row">
+        <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/age.png"/></image></ImageView>
+        <TextField fx:id="ageField" prefWidth="325" promptText="Age" styleClass="nutrition-line-field"/>
+    </HBox>
+
+    <HBox layoutX="86" layoutY="275" prefWidth="368" alignment="CENTER_LEFT" spacing="14" styleClass="underlined-row">
+        <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/gender.png"/></image></ImageView>
+        <Label text="Gender" styleClass="nutrition-line-label"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <RadioButton fx:id="maleRadio" text="Male" toggleGroup="$genderGroup" styleClass="compact-radio"/>
+        <RadioButton fx:id="femaleRadio" text="Female" toggleGroup="$genderGroup" styleClass="compact-radio"/>
+    </HBox>
+
+    <HBox layoutX="86" layoutY="368" prefWidth="368" alignment="CENTER" spacing="38">
+        <HBox prefWidth="165" alignment="CENTER_LEFT" spacing="10" styleClass="underlined-row">
+            <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/height.png"/></image></ImageView>
+            <TextField fx:id="feetField" prefWidth="120" promptText="Feet" styleClass="nutrition-line-field"/>
+        </HBox>
+        <HBox prefWidth="165" alignment="CENTER_LEFT" spacing="10" styleClass="underlined-row">
+            <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/height.png"/></image></ImageView>
+            <TextField fx:id="inchesField" prefWidth="120" promptText="Inches" styleClass="nutrition-line-field"/>
+        </HBox>
+    </HBox>
+
+    <HBox layoutX="86" layoutY="467" prefWidth="368" alignment="CENTER_LEFT" spacing="14" styleClass="underlined-row">
+        <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/height.png"/></image></ImageView>
+        <TextField fx:id="weightField" prefWidth="325" promptText="Weight (lb)" styleClass="nutrition-line-field"/>
+    </HBox>
+
+    <HBox layoutX="82" layoutY="550" prefWidth="376" alignment="CENTER" spacing="8">
+        <ImageView fitHeight="20" fitWidth="20" preserveRatio="true"><image><Image url="@../images/nutrition-icons/error.png"/></image></ImageView>
+        <Label fx:id="messageLabel" prefWidth="340" alignment="CENTER_LEFT" wrapText="true" styleClass="message-label"/>
+    </HBox>
+
+    <Button layoutX="110" layoutY="632" prefHeight="48" prefWidth="320" text="Continue" onAction="#continueToGoals" styleClass="nutrition-primary-button"/>
+
+    <HBox layoutX="72" layoutY="848" prefWidth="396" alignment="CENTER" spacing="8" styleClass="nutrition-note-flat">
+        <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/info.png"/></image></ImageView>
+        <Label prefWidth="350" wrapText="true" text="This information helps FitHub estimate your daily calorie and macro goals." styleClass="nutrition-note-text"/>
+    </HBox>
+</AnchorPane>

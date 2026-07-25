@@ -19,7 +19,11 @@ public class LoginController {
         }
         try {
             if (!AccountStore.accountExists()) error("No account exists yet. Select Create Account.");
-            else if (AccountStore.authenticate(u, p)) success("Login successful.");
+            else if (AccountStore.authenticate(u, p)) {
+                edu.utsa.cs3443.fithubapp.model.AppSession.setUsername(u.trim());
+                edu.utsa.cs3443.fithubapp.model.AppSession.clearNutrition();
+                FitHubApplication.showScreen("nutrition-input.fxml");
+            }
             else error("Incorrect username or password.");
         } catch (IOException e) {
             error("Could not read the local account.");

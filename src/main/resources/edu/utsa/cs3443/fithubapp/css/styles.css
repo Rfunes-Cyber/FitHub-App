@@ -142,3 +142,104 @@
     -fx-font-weight: bold;
 
 }
+.nutrition-overlay { -fx-background-color: rgba(4, 15, 30, 0.58); }
+.nutrition-title { -fx-fill: #31a9ff; -fx-font-size: 30px; -fx-font-weight: bold; }
+.nutrition-subtitle { -fx-text-fill: white; -fx-font-size: 15px; }
+.nutrition-section-title, .nutrition-label { -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; }
+.nutrition-field { -fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 12; -fx-padding: 12; -fx-font-size: 16px; }
+.nutrition-radio { -fx-text-fill: white; -fx-font-size: 17px; }
+.nutrition-note { -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: rgba(7,18,35,0.58); -fx-background-radius: 12; -fx-padding: 12; }
+.result-card { -fx-background-color: rgba(23, 39, 62, 0.88); -fx-background-radius: 18; -fx-padding: 18 24; }
+.result-name { -fx-text-fill: #cbd7e6; -fx-font-size: 16px; -fx-min-width: 120px; }
+.result-value { -fx-text-fill: white; -fx-font-size: 23px; -fx-font-weight: bold; }
+
+/* Nutrition prototype styling */
+.nutrition-welcome {
+    -fx-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+.nutrition-brand,
+.nutrition-brand-large {
+    -fx-fill: #18bdf2;
+    -fx-font-weight: bold;
+}
+.nutrition-brand { -fx-font-size: 30px; }
+.nutrition-brand-large { -fx-font-size: 34px; }
+.nutrition-subtitle-strong {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.underlined-row {
+    -fx-border-color: transparent transparent rgba(255,255,255,0.82) transparent;
+    -fx-border-width: 0 0 1.4 0;
+    -fx-padding: 4 2 5 2;
+}
+.nutrition-line-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: rgba(255,255,255,0.78);
+    -fx-font-size: 17px;
+    -fx-alignment: center;
+    -fx-padding: 3 0 3 0;
+}
+.nutrition-line-field:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.nutrition-line-label {
+    -fx-text-fill: rgba(255,255,255,0.78);
+    -fx-font-size: 17px;
+}
+.compact-radio {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+.compact-radio .radio,
+.nutrition-radio .radio {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 50%;
+    -fx-border-width: 2;
+    -fx-padding: 3;
+}
+.compact-radio:selected .dot,
+.nutrition-radio:selected .dot {
+    -fx-background-color: #18bdf2;
+    -fx-background-radius: 50%;
+}
+.nutrition-primary-button {
+    -fx-background-color: linear-gradient(to right, #08a8db, #24c4ee);
+    -fx-background-radius: 26;
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.26), 8, 0.15, 0, 3);
+}
+.nutrition-primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #079ccb, #20b8df);
+}
+.nutrition-note-flat {
+    -fx-padding: 8 10;
+}
+.nutrition-note-text {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.pro-tip-box {
+    -fx-border-color: rgba(255,255,255,0.70);
+    -fx-border-radius: 18;
+    -fx-border-width: 1.2;
+    -fx-background-color: rgba(18,31,49,0.55);
+    -fx-background-radius: 18;
+    -fx-padding: 13 18;
+}
+.pro-tip-title {
+    -fx-text-fill: #ffd44f;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
