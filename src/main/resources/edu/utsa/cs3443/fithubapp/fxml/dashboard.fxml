@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Temporary dashboard handoff view.
+    It intentionally has no fx:controller, so it does not modify or depend on
+    the dashboard teammate's DashboardController. The dashboard teammate can
+    replace this FXML with the final dashboard screen later.
+-->
+<AnchorPane prefHeight="960.0" prefWidth="540.0"
+            style="-fx-background-color: #081421;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER" layoutX="60.0" layoutY="315.0" prefWidth="420.0" spacing="18.0">
+        <Label text="Nutrition Setup Complete"
+               style="-fx-text-fill: #31a9ff; -fx-font-size: 30px; -fx-font-weight: bold;" />
+        <Label text="Your nutrition results are ready for the dashboard."
+               wrapText="true"
+               style="-fx-text-fill: white; -fx-font-size: 17px; -fx-alignment: center;" />
+    </VBox>
+</AnchorPane>
