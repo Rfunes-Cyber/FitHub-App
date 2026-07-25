@@ -1,0 +1,5 @@
+macro_name,consumed_grams,target_grams,progress_percent
+Protein,120,160,75
+Carbs,180,250,72
+Fat,60,80,75
+Fiber,25,30,83
