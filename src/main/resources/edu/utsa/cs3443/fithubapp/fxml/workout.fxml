@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="edu.utsa.cs3443.fithubapp.controller.WorkoutController"
+      spacing="15"
+      alignment="TOP_CENTER"
+      prefWidth="540"
+      prefHeight="960">
+
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <Label text="Workout Generator"/>
+
+    <Label text="Select Muscle Groups"/>
+
+    <CheckBox fx:id="chestCheckBox" text="Chest"/>
+    <CheckBox fx:id="backCheckBox" text="Back"/>
+    <CheckBox fx:id="armsCheckBox" text="Arms"/>
+    <CheckBox fx:id="legsCheckBox" text="Legs"/>
+    <CheckBox fx:id="shouldersCheckBox" text="Shoulders"/>
+    <CheckBox fx:id="coreCheckBox" text="Core"/>
+
+    <Label text="Equipment Type"/>
+
+    <ComboBox fx:id="equipmentComboBox"
+              promptText="Choose Home or Gym"/>
+
+    <Button text="Generate Workout"
+            onAction="#handleGenerateWorkout"/>
+
+    <Label fx:id="workoutNameLabel"
+           text="No workout generated"/>
+
+    <ListView fx:id="exerciseListView"
+              prefHeight="300"/>
+
+    <Button fx:id="startWorkoutButton"
+            text="Start Workout"
+            onAction="#handleStartWorkout"
+            disable="true"/>
+
+    <Label fx:id="currentExerciseLabel"
+           text="Current Exercise"/>
+
+    <Label fx:id="currentSetLabel"
+           text="Set 0 of 0"/>
+
+    <ProgressBar fx:id="workoutProgressBar"
+                 progress="0.0"
+                 prefWidth="300"/>
+
+    <Button fx:id="completeSetButton"
+            text="Complete Set"
+            onAction="#handleCompleteSet"
+            disable="true"/>
+
+    <Button fx:id="skipExerciseButton"
+            text="Skip Exercise"
+            onAction="#handleSkipExercise"
+            disable="true"/>
+
+</VBox>

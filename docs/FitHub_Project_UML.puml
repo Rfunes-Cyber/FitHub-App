@@ -1,0 +1,430 @@
+@startuml
+
+title FitHub Application UML Class Diagram
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+' =========================================================
+' APPLICATION PACKAGE
+' =========================================================
+
+package "Application" {
+
+    class FitHubApplication {
+        -{static} primaryStage : Stage
+
+        +start(stage : Stage) : void
+        +{static} showScreen(file : String) : void
+        +{static} main(args : String[]) : void
+    }
+
+    class Launcher <<utility>> {
+        +{static} main(args : String[]) : void
+    }
+
+    class JavaFXApplication <<external>>
+}
+
+FitHubApplication --|> JavaFXApplication
+Launcher ..> FitHubApplication : launches
+
+
+' =========================================================
+' CONTROLLER PACKAGE
+' =========================================================
+
+package "Controller" {
+
+    class CreateAccountController {
+        -error(s : String) : void
+        -success(s : String) : void
+    }
+
+    class DashboardController {
+        -dashboardSummary : DashboardSummary
+        -macroNutrients : List<MacroNutrient>
+        -calorieHistory : List<CalorieHistoryEntry>
+
+        +DashboardController()
+        +loadSampleDashboardData() : void
+        +getDashboardSummary() : DashboardSummary
+        +getMacroNutrients() : List<MacroNutrient>
+        +getCalorieHistory() : List<CalorieHistoryEntry>
+        +calculateCaloriesRemaining() : int
+    }
+
+    class LoginController {
+        -error(s : String) : void
+        -success(s : String) : void
+    }
+
+    class NutritionController {
+        -initialize() : void
+        -continueToGoals() : void
+        -calculateNutrition() : void
+        -error(message : String) : void
+    }
+
+    class PasswordResetController {
+        -error(s : String) : void
+        -success(s : String) : void
+    }
+
+    class WorkoutController {
+        -chestCheckBox : CheckBox
+        -backCheckBox : CheckBox
+        -armsCheckBox : CheckBox
+        -legsCheckBox : CheckBox
+        -shouldersCheckBox : CheckBox
+        -coreCheckBox : CheckBox
+        -equipmentComboBox : ComboBox<String>
+        -workoutNameLabel : Label
+        -exerciseListView : ListView<String>
+        -startWorkoutButton : Button
+        -currentExerciseLabel : Label
+        -currentSetLabel : Label
+        -workoutProgressBar : ProgressBar
+        -completeSetButton : Button
+        -skipExerciseButton : Button
+        -generatedWorkout : Workout
+        -activeSession : WorkoutSession
+
+        -initialize() : void
+        -handleGenerateWorkout() : void
+        -handleStartWorkout() : void
+        -handleCompleteSet() : void
+        -handleSkipExercise() : void
+        -getSelectedMuscleGroups() : ArrayList<String>
+        -displayWorkout() : void
+        -updateSessionDisplay() : void
+        -showError(message : String) : void
+    }
+}
+
+
+' =========================================================
+' MODEL PACKAGE
+' =========================================================
+
+package "Model" {
+
+    class AccountStore <<utility>> {
+        -{static} STORE : Path
+
+        +{static} accountExists() : boolean
+        +{static} createAccount(username : String, password : String) : void
+        +{static} authenticate(username : String, password : String) : boolean
+        +{static} changePassword(username : String, password : String) : boolean
+        -{static} load() : Properties
+        -{static} save(p : Properties) : void
+        -{static} hash(value : String) : String
+    }
+
+    class AppSession <<utility>> {
+        -{static} username : String
+        -{static} userInfo : UserInfo
+        -{static} nutritionResults : NutritionResults
+
+        +{static} clearNutrition() : void
+    }
+
+    class CalorieHistoryEntry {
+        -dayLabel : String
+        -caloriesConsumed : int
+
+        +CalorieHistoryEntry(dayLabel : String, caloriesConsumed : int)
+        +getDayLabel() : String
+        +setDayLabel(dayLabel : String) : void
+        +getCaloriesConsumed() : int
+        +setCaloriesConsumed(caloriesConsumed : int) : void
+    }
+
+    class DashboardSummary {
+        -userId : String
+        -userName : String
+        -calorieGoal : int
+        -caloriesConsumed : int
+        -dayStreak : int
+
+        +DashboardSummary(userId : String, userName : String, calorieGoal : int, caloriesConsumed : int, dayStreak : int)
+        +getCaloriesRemaining() : int
+        +getDailyGoalPercent() : double
+        +getUserId() : String
+        +setUserId(userId : String) : void
+        +getUserName() : String
+        +setUserName(userName : String) : void
+        +getCalorieGoal() : int
+        +setCalorieGoal(calorieGoal : int) : void
+        +getCaloriesConsumed() : int
+        +setCaloriesConsumed(caloriesConsumed : int) : void
+        +getDayStreak() : int
+        +setDayStreak(dayStreak : int) : void
+    }
+
+    class Exercise {
+        -workoutName : String
+        -name : String
+        -muscleGroup : String
+        -equipmentType : String
+        -sets : int
+        -reps : int
+
+        +Exercise(workoutName : String, name : String, muscleGroup : String, equipmentType : String, sets : int, reps : int)
+        +getWorkoutName() : String
+        +getName() : String
+        +getMuscleGroup() : String
+        +getEquipmentType() : String
+        +getSets() : int
+        +getReps() : int
+        +toString() : String
+    }
+
+    class MacroNutrient {
+        -name : String
+        -consumedGrams : int
+        -targetGrams : int
+
+        +MacroNutrient(name : String, consumedGrams : int, targetGrams : int)
+        +getProgressPercent() : double
+        +getName() : String
+        +setName(name : String) : void
+        +getConsumedGrams() : int
+        +setConsumedGrams(consumedGrams : int) : void
+        +getTargetGrams() : int
+        +setTargetGrams(targetGrams : int) : void
+    }
+
+    class NutritionResults {
+        -bmr : double
+        -tdee : double
+        -dailyCalories : double
+        -proteinGrams : double
+        -carbohydrateGrams : double
+        -fatGrams : double
+
+        +NutritionResults(bmr : double, tdee : double, dailyCalories : double, proteinGrams : double, carbohydrateGrams : double, fatGrams : double)
+        +getBmr() : double
+        +getTdee() : double
+        +getDailyCalories() : double
+        +getProteinGrams() : double
+        +getCarbohydrateGrams() : double
+        +getFatGrams() : double
+    }
+
+    class User {
+    }
+
+    class UserInfo {
+        -age : int
+        -heightCm : double
+        -weightKg : double
+        -gender : String
+        -activityLevel : String
+        -fitnessGoal : String
+
+        +UserInfo()
+    }
+
+    class Workout {
+        -name : String
+        -durationMin : int
+        -muscleGroups : ArrayList<String>
+        -exercises : ArrayList<Exercise>
+
+        +Workout(name : String, durationMin : int)
+        +addExercise(exercise : Exercise) : void
+        +addMuscleGroup(muscleGroup : String) : void
+        +getName() : String
+        +getDurationMin() : int
+        +getMuscleGroups() : ArrayList<String>
+        +getExercises() : ArrayList<Exercise>
+        +toString() : String
+    }
+
+    class WorkoutSession {
+        -workout : Workout
+        -currentExerciseIndex : int
+        -currentSet : int
+        -completedSets : int
+        -workoutFinished : boolean
+
+        +WorkoutSession(workout : Workout)
+        +getWorkout() : Workout
+        +getCurrentExercise() : Exercise
+        +getCurrentExerciseIndex() : int
+        +getCurrentSet() : int
+        +getCompletedSets() : int
+        +isWorkoutFinished() : boolean
+        +completeSet() : void
+        +skipExercise() : void
+        -moveToNextExercise() : void
+        +getTotalSets() : int
+        +getProgressPercent() : double
+        +toString() : String
+    }
+
+    class WorkoutLog {
+    }
+}
+
+
+' =========================================================
+' UTILITY PACKAGE
+' =========================================================
+
+package "Utility" {
+
+    class ExerciseFileLoader <<utility>> {
+        -{static} RESOURCE_PATH : String
+
+        -ExerciseFileLoader()
+        +{static} loadExercises(selectedMuscleGroups : ArrayList<String>, selectedEquipmentType : String) : ArrayList<Exercise>
+        -{static} openCsvReader() : BufferedReader
+    }
+
+    class NutritionCalc <<utility>> {
+        -NutritionCalc()
+
+        +{static} calculate(age : int, heightCm : double, weightKg : double, gender : String, activityLevel : String, fitnessGoal : String) : NutritionResults
+        -{static} calculateBmr(age : int, heightCm : double, weightKg : double, gender : String) : double
+        -{static} getActivityMultiplier(activityLevel : String) : double
+        -{static} adjustCaloriesForGoal(tdee : double, fitnessGoal : String) : double
+        -{static} validateInputs(age : int, heightCm : double, weightKg : double, gender : String, activityLevel : String, fitnessGoal : String) : void
+    }
+
+    class WorkoutGenerator <<utility>> {
+        -WorkoutGenerator()
+
+        +{static} generateWorkout(selectedMuscleGroups : ArrayList<String>, equipmentType : String) : Workout
+    }
+
+    class WorkoutTest <<test>> {
+        +{static} main(args : String[]) : void
+    }
+}
+
+
+' =========================================================
+' VIEW PACKAGE
+' =========================================================
+
+package "View" {
+
+    class DashboardScreen {
+    }
+
+    class LoginScreen {
+    }
+
+    class NutritionResultsScreen {
+    }
+
+    class UserInputScreen {
+    }
+
+    class WorkoutTrackerScreen {
+    }
+}
+
+
+' =========================================================
+' RESOURCE FILES
+' =========================================================
+
+package "Resources" {
+
+    class ExercisesCSV <<CSV File>>
+    class LoginFXML <<FXML File>>
+    class CreateAccountFXML <<FXML File>>
+    class PasswordResetFXML <<FXML File>>
+    class DashboardFXML <<FXML File>>
+    class NutritionInputFXML <<FXML File>>
+    class NutritionGoalsFXML <<FXML File>>
+    class NutritionResultsFXML <<FXML File>>
+    class WorkoutFXML <<FXML File>>
+}
+
+
+' =========================================================
+' MODEL RELATIONSHIPS
+' =========================================================
+
+Workout "1" *-- "0..*" Exercise : contains
+
+WorkoutSession --> Workout : manages
+WorkoutSession --> Exercise : tracks
+
+AppSession --> UserInfo : stores
+AppSession --> NutritionResults : stores
+
+DashboardController --> DashboardSummary : manages
+DashboardController --> "0..*" MacroNutrient : manages
+DashboardController --> "0..*" CalorieHistoryEntry : manages
+
+
+' =========================================================
+' CONTROLLER / MODEL RELATIONSHIPS
+' =========================================================
+
+CreateAccountController ..> AccountStore : creates account
+LoginController ..> AccountStore : authenticates
+PasswordResetController ..> AccountStore : changes password
+
+LoginController ..> AppSession : stores user session
+NutritionController ..> AppSession : stores nutrition data
+
+NutritionController ..> UserInfo : reads input
+NutritionController ..> NutritionCalc : calculates
+NutritionController ..> NutritionResults : receives
+
+WorkoutController ..> WorkoutGenerator : generates workout
+WorkoutController ..> Workout : receives
+WorkoutController ..> Exercise : displays
+WorkoutController ..> WorkoutSession : controls
+
+
+' =========================================================
+' UTILITY RELATIONSHIPS
+' =========================================================
+
+NutritionCalc ..> NutritionResults : creates
+
+WorkoutGenerator ..> Workout : creates
+WorkoutGenerator ..> ExerciseFileLoader : uses
+ExerciseFileLoader ..> Exercise : creates
+ExerciseFileLoader ..> ExercisesCSV : reads
+
+WorkoutTest ..> WorkoutGenerator : tests
+WorkoutTest ..> Workout : displays
+WorkoutTest ..> Exercise : displays
+
+
+' =========================================================
+' VIEW / CONTROLLER RELATIONSHIPS
+' =========================================================
+
+CreateAccountFXML ..> CreateAccountController
+LoginFXML ..> LoginController
+PasswordResetFXML ..> PasswordResetController
+DashboardFXML ..> DashboardController
+NutritionInputFXML ..> NutritionController
+NutritionGoalsFXML ..> NutritionController
+NutritionResultsFXML ..> NutritionController
+WorkoutFXML ..> WorkoutController
+
+LoginController ..> FitHubApplication : navigates
+CreateAccountController ..> FitHubApplication : navigates
+PasswordResetController ..> FitHubApplication : navigates
+NutritionController ..> FitHubApplication : navigates
+WorkoutController ..> FitHubApplication : navigates
+
+DashboardScreen ..> DashboardController
+LoginScreen ..> LoginController
+NutritionResultsScreen ..> NutritionController
+UserInputScreen ..> NutritionController
+WorkoutTrackerScreen ..> WorkoutController
+
+@enduml
