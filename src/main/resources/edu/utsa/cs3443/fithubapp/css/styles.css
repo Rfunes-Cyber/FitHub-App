@@ -92,68 +92,82 @@
 .secondary-button{
 
     -fx-background-color: transparent;
-
     -fx-border-color: #2FA8FF;
-
     -fx-border-width:2;
-
     -fx-border-radius:24;
-
     -fx-background-radius:24;
-
     -fx-text-fill:#2FA8FF;
-
     -fx-font-size:16px;
-
     -fx-font-weight:bold;
-
     -fx-cursor:hand;
-
 }
-
 .secondary-button:hover{
-
     -fx-background-color: rgba(47,168,255,.12);
-
 }
-
 .secondary-button:pressed{
-
     -fx-background-color: rgba(47,168,255,.22);
-
 }
-
 .fit-logo {
-
     -fx-fill: #1E90FF;
-
     -fx-font-size: 34px;
-
     -fx-font-weight: bold;
-
 }
-
 .hub-logo {
-
     -fx-fill: white;
-
     -fx-font-size: 34px;
-
     -fx-font-weight: bold;
-
 }
-.nutrition-overlay { -fx-background-color: rgba(4, 15, 30, 0.58); }
-.nutrition-title { -fx-fill: #31a9ff; -fx-font-size: 30px; -fx-font-weight: bold; }
-.nutrition-subtitle { -fx-text-fill: white; -fx-font-size: 15px; }
-.nutrition-section-title, .nutrition-label { -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; }
-.nutrition-field { -fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 12; -fx-padding: 12; -fx-font-size: 16px; }
-.nutrition-radio { -fx-text-fill: white; -fx-font-size: 17px; }
-.nutrition-note { -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: rgba(7,18,35,0.58); -fx-background-radius: 12; -fx-padding: 12; }
-.result-card { -fx-background-color: rgba(23, 39, 62, 0.88); -fx-background-radius: 18; -fx-padding: 18 24; }
-.result-name { -fx-text-fill: #cbd7e6; -fx-font-size: 16px; -fx-min-width: 120px; }
-.result-value { -fx-text-fill: white; -fx-font-size: 23px; -fx-font-weight: bold; }
+.nutrition-overlay {
+    -fx-background-color: transparent;
+}
+.nutrition-title {
+    -fx-fill: #31a9ff;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+.nutrition-subtitle {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+}
+.nutrition-section-title, .nutrition-label {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+.nutrition-field {
+    -fx-background-color: rgba(255,255,255,0.90);
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+    -fx-font-size: 16px;
+}
+.nutrition-radio {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+}
+.nutrition-note {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(7,18,35,0.58);
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}
+.result-card {
+    -fx-background-color: rgba(23, 39, 62, 0.88);
+    -fx-background-radius: 18;
+    -fx-padding: 18 24;
+}
+.result-name {
+    -fx-text-fill: #cbd7e6;
+    -fx-font-size: 16px;
+    -fx-min-width: 120px;
+}
+.result-value {
+    -fx-text-fill: white;
+    -fx-font-size: 23px;
+    -fx-font-weight: bold;
+}
 
-/* Nutrition prototype styling */
 .nutrition-welcome {
     -fx-fill: white;
     -fx-font-size: 30px;
@@ -164,8 +178,17 @@
     -fx-fill: #18bdf2;
     -fx-font-weight: bold;
 }
-.nutrition-brand { -fx-font-size: 30px; }
-.nutrition-brand-large { -fx-font-size: 34px; }
+.nutrition-brand {
+    -fx-font-size: 30px;
+}
+.nutrition-brand-large {
+    -fx-font-size: 34px;
+}
+.nutrition-brand-white {
+    -fx-fill: white;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+}
 .nutrition-subtitle-strong {
     -fx-text-fill: white;
     -fx-font-size: 16px;

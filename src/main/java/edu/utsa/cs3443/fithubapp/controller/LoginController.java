@@ -26,6 +26,7 @@ public class LoginController {
             }
             else error("Incorrect username or password.");
         } catch (IOException e) {
+            e.printStackTrace();
             error("Could not read the local account.");
         }
     }

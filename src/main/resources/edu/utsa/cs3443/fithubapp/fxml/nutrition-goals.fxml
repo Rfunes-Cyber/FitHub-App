@@ -13,9 +13,12 @@
         <ToggleGroup fx:id="goalGroup"/>
     </fx:define>
 
-    <ImageView fitHeight="960" fitWidth="540" preserveRatio="false"><image><Image url="@../images/nutrition-background.jpeg"/></image></ImageView>
+    <ImageView fitHeight="960" fitWidth="1200" layoutX="-350" layoutY="0" preserveRatio="false"><image><Image url="@../images/nutrition-background.jpeg"/></image></ImageView>
     <AnchorPane prefHeight="960" prefWidth="540" styleClass="nutrition-overlay"/>
-    <Text layoutX="48" layoutY="72" text="FitHub" styleClass="nutrition-brand-large"/>
+    <HBox layoutX="48" layoutY="40" alignment="CENTER_LEFT" spacing="0">
+        <Text text="Fit" styleClass="nutrition-brand-large"/>
+        <Text text="Hub" styleClass="nutrition-brand-white"/>
+    </HBox>
 
     <Label layoutX="58" layoutY="128" text="Activity Level:" styleClass="nutrition-section-title"/>
     <VBox layoutX="66" layoutY="180" spacing="18">
@@ -34,8 +37,11 @@
         <RadioButton fx:id="extremeGainRadio" text="Extreme weight gain (2lbs)" toggleGroup="$goalGroup" styleClass="nutrition-radio"/>
     </VBox>
 
-    <HBox layoutX="70" layoutY="686" prefWidth="400" alignment="CENTER" spacing="8">
-        <ImageView fitHeight="20" fitWidth="20" preserveRatio="true"><image><Image url="@../images/nutrition-icons/error.png"/></image></ImageView>
+    <HBox fx:id="errorBox" layoutX="70" layoutY="686" prefWidth="400" alignment="CENTER" spacing="8" visible="false" managed="false">
+        <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+            <image><Image url="@../images/nutrition-icons/error.png"/></image>
+        </ImageView>
+
         <Label fx:id="messageLabel" prefWidth="360" alignment="CENTER_LEFT" wrapText="true" styleClass="message-label"/>
     </HBox>
 
