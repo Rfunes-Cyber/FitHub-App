@@ -7,6 +7,7 @@ import edu.utsa.cs3443.fithubapp.model.UserInfo;
 import edu.utsa.cs3443.fithubapp.util.NutritionCalc;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
@@ -30,6 +31,7 @@ public class NutritionController {
     @FXML private RadioButton extremeGainRadio;
 
     @FXML private Label messageLabel;
+    @FXML private HBox errorBox;
     @FXML private Label caloriesLabel;
     @FXML private Label proteinLabel;
     @FXML private Label carbsLabel;
@@ -37,7 +39,13 @@ public class NutritionController {
 
     @FXML
     private void initialize() {
+        if (errorBox != null) {
+            errorBox.setVisible(false);
+            errorBox.setManaged(false);
+        }
+
         NutritionResults results = AppSession.getNutritionResults();
+
         if (results != null && caloriesLabel != null) {
             caloriesLabel.setText(Math.round(results.getDailyCalories()) + " kcal");
             proteinLabel.setText(Math.round(results.getProteinGrams()) + " g");
@@ -48,26 +56,52 @@ public class NutritionController {
 
     @FXML
     private void continueToGoals() {
+
+        if (errorBox != null) {
+            errorBox.setVisible(false);
+            errorBox.setManaged(false);
+        }
+
+        if (messageLabel != null) {
+            messageLabel.setText("");
+        }
+
         try {
             int age = Integer.parseInt(ageField.getText().trim());
             int feet = Integer.parseInt(feetField.getText().trim());
             int inches = Integer.parseInt(inchesField.getText().trim());
             double weightLb = Double.parseDouble(weightField.getText().trim());
 
-            if (age < 1 || age > 100) throw new IllegalArgumentException("Age must be between 1 and 100.");
-            if (feet < 3 || feet > 8 || inches < 0 || inches > 11) throw new IllegalArgumentException("Enter a valid height.");
-            if (weightLb <= 0) throw new IllegalArgumentException("Weight must be greater than zero.");
+            if (age < 1 || age > 100)
+                throw new IllegalArgumentException("Age must be between 1 and 100.");
 
-            String gender = maleRadio.isSelected() ? "Male" : femaleRadio.isSelected() ? "Female" : null;
-            if (gender == null) throw new IllegalArgumentException("Please select a gender.");
+            if (feet < 3 || feet > 8 || inches < 0 || inches > 11)
+                throw new IllegalArgumentException("Enter a valid height.");
+
+            if (weightLb <= 0)
+                throw new IllegalArgumentException("Weight must be greater than zero.");
+
+            String gender = maleRadio.isSelected()
+                    ? "Male"
+                    : femaleRadio.isSelected()
+                      ? "Female"
+                      : null;
+
+            if (gender == null)
+                throw new IllegalArgumentException("Please select a gender.");
 
             double heightCm = ((feet * 12.0) + inches) * 2.54;
             double weightKg = weightLb * 0.45359237;
-            AppSession.setUserInfo(new UserInfo(age, heightCm, weightKg, gender, null, null));
+
+            AppSession.setUserInfo(
+                    new UserInfo(age, heightCm, weightKg, gender, null, null));
             FitHubApplication.showScreen("nutrition-goals.fxml");
-        } catch (NumberFormatException e) {
+
+        }
+        catch (NumberFormatException e) {
             error("Please enter numbers in every field.");
-        } catch (IllegalArgumentException | IOException e) {
+        }
+        catch (IllegalArgumentException | IOException e) {
             error(e.getMessage());
         }
     }
@@ -107,18 +141,18 @@ public class NutritionController {
         }
     }
 
-    @FXML private void backToPersonalInfo() throws IOException {
-        FitHubApplication.showScreen("nutrition-input.fxml");
-    }
-
-    @FXML private void proceedToDashboard() throws IOException {
-        FitHubApplication.showScreen("dashboard.fxml");
-    }
+    @FXML private void backToPersonalInfo() throws IOException {FitHubApplication.showScreen("nutrition-input.fxml");}
+    @FXML private void proceedToDashboard() throws IOException {FitHubApplication.showScreen("dashboard.fxml");}
 
     private void error(String message) {
         if (messageLabel != null) {
             messageLabel.getStyleClass().setAll("message-label", "error-message");
             messageLabel.setText(message == null ? "Unable to continue." : message);
+        }
+
+        if (errorBox != null) {
+            errorBox.setVisible(true);
+            errorBox.setManaged(true);
         }
     }
 }
