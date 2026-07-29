@@ -1,0 +1,334 @@
+.phone-root {
+    -fx-background-color: #06101f;
+    -fx-font-family: "Segoe UI";
+}
+
+.phone-header {
+    -fx-background-color: #071426;
+    -fx-padding: 8 26 12 26;
+}
+
+.status-bar {
+    -fx-padding: 0 0 18 0;
+}
+
+.status-time {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.status-icons {
+    -fx-text-fill: #dbe5f4;
+    -fx-font-size: 11px;
+}
+
+.brand-line {
+    -fx-padding: 0 0 10 0;
+}
+
+.eyebrow {
+    -fx-text-fill: #6f8199;
+    -fx-font-size: 10px;
+}
+
+.brand-mark {
+    -fx-text-fill: #2d7dff;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.brand-fit, .brand-hub {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.brand-fit { -fx-text-fill: white; }
+.brand-hub { -fx-text-fill: #2d7dff; }
+
+.welcome-line {
+    -fx-padding: 4 0 0 0;
+}
+
+.hero-name {
+    -fx-text-fill: white;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+
+.hero-subtitle, .page-subtitle {
+    -fx-text-fill: #8493a9;
+    -fx-font-size: 12px;
+}
+
+.streak-dot {
+    -fx-fill: #2d7dff;
+}
+
+.streak-big {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.streak-caption {
+    -fx-text-fill: #8493a9;
+    -fx-font-size: 11px;
+}
+
+.page-title {
+    -fx-text-fill: white;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+
+.screen-scroll,
+.screen-scroll > .viewport {
+    -fx-background-color: #06101f;
+}
+
+.screen-content {
+    -fx-background-color: #06101f;
+    -fx-padding: 12 24 18 24;
+}
+
+.panel, .macro-tile {
+    -fx-background-color: #0d1b30;
+    -fx-border-color: #203a5f;
+    -fx-border-width: 1;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+.panel {
+    -fx-padding: 18;
+}
+
+.tall-panel {
+    -fx-padding: 24;
+}
+
+.panel-title {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.ring-track {
+    -fx-fill: transparent;
+    -fx-stroke: #1b3150;
+    -fx-stroke-width: 18;
+}
+
+.ring-value {
+    -fx-fill: transparent;
+    -fx-stroke: #2d7dff;
+    -fx-stroke-width: 18;
+    -fx-stroke-line-cap: round;
+}
+
+.ring-number {
+    -fx-text-fill: white;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+
+.ring-blue-text {
+    -fx-text-fill: #2d7dff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.ring-small {
+    -fx-text-fill: #9aa8bb;
+    -fx-font-size: 11px;
+}
+
+.legend-label {
+    -fx-text-fill: #8e9caf;
+    -fx-font-size: 11px;
+}
+
+.legend-value {
+    -fx-text-fill: #aab7ca;
+    -fx-font-size: 11px;
+}
+
+.legend-blue { -fx-text-fill: #2d7dff; }
+.legend-cyan { -fx-text-fill: #23b4ff; }
+.legend-gray { -fx-text-fill: #526783; }
+
+.mini-chart {
+    -fx-background-color: transparent;
+    -fx-pref-height: 105;
+}
+
+.chart-plot-background {
+    -fx-background-color: #0a1729;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.axis {
+    -fx-tick-label-fill: #7f8da1;
+    -fx-font-size: 9px;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #2d7dff;
+}
+
+.link-label {
+    -fx-text-fill: #2d7dff;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.macro-tile {
+    -fx-padding: 10 6 9 6;
+}
+
+.macro-name {
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.macro-amount {
+    -fx-text-fill: #8795a9;
+    -fx-font-size: 9px;
+}
+
+.progress-bar {
+    -fx-pref-height: 6;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #26364d;
+    -fx-background-radius: 10;
+}
+
+.progress-bar > .bar {
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+}
+
+.blue-bar > .bar { -fx-background-color: #2d7dff; }
+.green-bar > .bar { -fx-background-color: #31c85b; }
+.orange-bar > .bar { -fx-background-color: #ff6b2c; }
+.purple-bar > .bar { -fx-background-color: #935bff; }
+
+.blue-percent, .green-percent, .orange-percent, .purple-percent {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.blue-percent { -fx-text-fill: #2d7dff; }
+.green-percent { -fx-text-fill: #31c85b; }
+.orange-percent { -fx-text-fill: #ff6b2c; }
+.purple-percent { -fx-text-fill: #935bff; }
+
+.bottom-nav {
+    -fx-background-color: #0a1930;
+    -fx-padding: 12 24 18 24;
+    -fx-border-color: #203a5f transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.nav-icon, .nav-icon-active {
+    -fx-font-size: 34px;
+}
+
+.nav-icon { -fx-text-fill: #718198; }
+.nav-icon-active { -fx-text-fill: #2d7dff; }
+
+.nav-text, .nav-text-active {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.nav-text { -fx-text-fill: #718198; }
+.nav-text-active { -fx-text-fill: #2d7dff; }
+
+.avatar-ring {
+    -fx-fill: transparent;
+    -fx-stroke: #2d7dff;
+    -fx-stroke-width: 3;
+}
+
+.avatar-fill {
+    -fx-fill: #2d7dff;
+}
+
+.profile-name {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.profile-detail {
+    -fx-text-fill: #8997aa;
+    -fx-font-size: 12px;
+}
+
+.primary-button {
+    -fx-background-color: #2d7dff;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+    -fx-padding: 8 22;
+}
+
+.stat-value {
+    -fx-text-fill: white;
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+}
+
+.stat-label {
+    -fx-text-fill: #8390a4;
+    -fx-font-size: 10px;
+}
+
+.target-blue, .target-green, .target-purple {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.target-blue { -fx-text-fill: #2d7dff; }
+.target-green { -fx-text-fill: #31c85b; }
+.target-purple { -fx-text-fill: #935bff; }
+
+.settings-label {
+    -fx-text-fill: #94a2b5;
+    -fx-font-size: 12px;
+}
+
+.settings-value {
+    -fx-text-fill: #9aa8bb;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.divider {
+    -fx-background-color: #203a5f;
+}
+
+.switch-button {
+    -fx-background-color: #2d7dff;
+    -fx-background-radius: 20;
+    -fx-pref-width: 48;
+    -fx-pref-height: 24;
+}
+
+.logout-label {
+    -fx-text-fill: #ff4d5d;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}

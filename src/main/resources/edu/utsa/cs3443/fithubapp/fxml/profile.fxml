@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.utsa.cs3443.fithubapp.controller.ProfileController"
+            prefWidth="390" prefHeight="844"
+            minWidth="390" maxWidth="390"
+            minHeight="844" maxHeight="844"
+            stylesheets="@../css/fithub-mobile.css"
+            styleClass="phone-root">
+
+    <top>
+        <VBox styleClass="phone-header">
+            <HBox alignment="CENTER_LEFT" styleClass="status-bar">
+                <Label text="9:41" styleClass="status-time"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="▮▮▮  ◔  ▰" styleClass="status-icons"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="9" styleClass="brand-line">
+                <Label text="Profile" styleClass="eyebrow"/>
+                <Label text="▮▮▮" styleClass="brand-mark"/>
+                <Label text="Fit" styleClass="brand-fit"/>
+                <Label text="Hub" styleClass="brand-hub"/>
+            </HBox>
+
+            <Label text="Profile" styleClass="page-title"/>
+            <Label text="Your fitness information" styleClass="page-subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="22" styleClass="screen-content">
+            <HBox alignment="CENTER_LEFT" spacing="18" styleClass="panel tall-panel">
+                <StackPane>
+                    <Circle radius="42" styleClass="avatar-ring"/>
+                    <Circle radius="14" translateY="-14" styleClass="avatar-fill"/>
+                    <Circle radius="27" translateY="19" styleClass="avatar-fill"/>
+                </StackPane>
+                <VBox spacing="7">
+                    <Label text="Abdulrahman" styleClass="profile-name"/>
+                    <Label text="Goal: Lose Weight" styleClass="profile-detail"/>
+                    <Label text="Activity: Moderate" styleClass="profile-detail"/>
+                    <Button text="Edit Profile" styleClass="primary-button"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="14" styleClass="panel">
+                <Label text="Body Stats" styleClass="panel-title"/>
+                <GridPane hgap="30">
+                    <VBox alignment="CENTER" GridPane.columnIndex="0">
+                        <Label text="175.4" styleClass="stat-value"/>
+                        <Label text="Weight lbs" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox alignment="CENTER" GridPane.columnIndex="1">
+                        <Label text="5'10&quot;" styleClass="stat-value"/>
+                        <Label text="Height" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox alignment="CENTER" GridPane.columnIndex="2">
+                        <Label text="19" styleClass="stat-value"/>
+                        <Label text="Age" styleClass="stat-label"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <VBox spacing="14" styleClass="panel">
+                <Label text="Daily Targets" styleClass="panel-title"/>
+                <GridPane hgap="30">
+                    <VBox alignment="CENTER" GridPane.columnIndex="0">
+                        <Label text="2,200" styleClass="target-blue"/>
+                        <Label text="Calories" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox alignment="CENTER" GridPane.columnIndex="1">
+                        <Label text="160g" styleClass="target-green"/>
+                        <Label text="Protein" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox alignment="CENTER" GridPane.columnIndex="2">
+                        <Label text="30g" styleClass="target-purple"/>
+                        <Label text="Fiber" styleClass="stat-label"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="42" styleClass="bottom-nav">
+            <VBox alignment="CENTER" spacing="3">
+                <Label text="◯" styleClass="nav-icon-active"/>
+                <Label text="Profile" styleClass="nav-text-active"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="3"
+                  onMouseClicked="#openWorkouts"
+                  styleClass="nav-clickable">
+                <Label text="✚" styleClass="nav-icon"/>
+                <Label text="Workouts" styleClass="nav-text"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="3"
+                  onMouseClicked="#openSettings"
+                  styleClass="nav-clickable">
+                <Label text="⊙" styleClass="nav-icon"/>
+                <Label text="Settings" styleClass="nav-text"/>
+            </VBox>
+        </HBox>
+    </bottom>
+</BorderPane>
