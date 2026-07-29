@@ -1,24 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
-<!--
-    Temporary dashboard handoff view.
-    It intentionally has no fx:controller, so it does not modify or depend on
-    the dashboard teammate's DashboardController. The dashboard teammate can
-    replace this FXML with the final dashboard screen later.
--->
-<AnchorPane prefHeight="960.0" prefWidth="540.0"
-            style="-fx-background-color: #081421;"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1">
-    <VBox alignment="CENTER" layoutX="60.0" layoutY="315.0" prefWidth="420.0" spacing="18.0">
-        <Label text="Nutrition Setup Complete"
-               style="-fx-text-fill: #31a9ff; -fx-font-size: 30px; -fx-font-weight: bold;" />
-        <Label text="Your nutrition results are ready for the dashboard."
-               wrapText="true"
-               style="-fx-text-fill: white; -fx-font-size: 17px; -fx-alignment: center;" />
-    </VBox>
-</AnchorPane>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.utsa.cs3443.fithubapp.controller.DashboardController"
+            prefWidth="390" prefHeight="844"
+            minWidth="390" maxWidth="390"
+            minHeight="844" maxHeight="844"
+            stylesheets="@../css/fithub-mobile.css"
+            styleClass="phone-root">
+
+    <top>
+        <VBox styleClass="phone-header">
+            <HBox alignment="CENTER_LEFT" styleClass="status-bar">
+                <Label text="9:41" styleClass="status-time"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="▮▮▮  ◔  ▰" styleClass="status-icons"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="9" styleClass="brand-line">
+                <Label text="Dashboard" styleClass="eyebrow"/>
+                <Label text="▮▮▮" styleClass="brand-mark"/>
+                <Label text="Fit" styleClass="brand-fit"/>
+                <Label text="Hub" styleClass="brand-hub"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="8" styleClass="welcome-line">
+                <VBox spacing="1">
+                    <Label text="Good morning," styleClass="eyebrow"/>
+                    <Label fx:id="welcomeLabel" text="Abdulrahman!" styleClass="hero-name"/>
+                    <Label text="Let's crush your goals today." styleClass="hero-subtitle"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Circle radius="15" styleClass="streak-dot"/>
+                <Label fx:id="streakLabel" text="3" styleClass="streak-big"/>
+                <Label text="day streak" styleClass="streak-caption"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="NEVER"
+                    styleClass="screen-scroll">
+            <content>
+                <VBox spacing="18" styleClass="screen-content">
+
+                    <VBox spacing="12" styleClass="panel">
+                        <Label text="Calories" styleClass="panel-title"/>
+
+                        <HBox alignment="CENTER" spacing="13">
+                            <StackPane prefWidth="145" prefHeight="145">
+                                <Circle radius="55" styleClass="ring-track"/>
+                                <Circle radius="55"
+                                        rotate="-90"
+                                        strokeDashArray="260.0, 100.0"
+                                        styleClass="ring-value"/>
+                                <VBox alignment="CENTER" spacing="0">
+                                    <Label fx:id="caloriesRemainingLabel" text="550" styleClass="ring-number"/>
+                                    <Label text="kcal left" styleClass="ring-blue-text"/>
+                                    <Label fx:id="calorieGoalLabel" text="/ 2,200 kcal" styleClass="ring-small"/>
+                                </VBox>
+                            </StackPane>
+
+                            <VBox spacing="9" HBox.hgrow="ALWAYS">
+                                <HBox spacing="6">
+                                    <Label text="●" styleClass="legend-blue"/>
+                                    <Label text="Consumed" styleClass="legend-label"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label fx:id="caloriesConsumedLabel" text="1,650" styleClass="legend-value"/>
+                                </HBox>
+
+                                <HBox spacing="6">
+                                    <Label text="●" styleClass="legend-cyan"/>
+                                    <Label text="Goal" styleClass="legend-label"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="2,200" styleClass="legend-value"/>
+                                </HBox>
+
+                                <HBox spacing="6">
+                                    <Label text="●" styleClass="legend-gray"/>
+                                    <Label text="Remaining" styleClass="legend-label"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="550" styleClass="legend-value"/>
+                                </HBox>
+                            </VBox>
+                        </HBox>
+
+                        <ProgressBar fx:id="calorieProgressBar"
+                                     progress="0.75"
+                                     visible="false"
+                                     managed="false"/>
+
+                        <BarChart fx:id="calorieHistoryChart"
+                                  animated="false"
+                                  legendVisible="false"
+                                  prefHeight="105"
+                                  styleClass="mini-chart">
+                            <xAxis>
+                                <CategoryAxis/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis lowerBound="0"
+                                            upperBound="3000"
+                                            tickUnit="1000"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+
+                    <VBox spacing="12" styleClass="panel">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Macronutrients" styleClass="panel-title"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="View Details ›" styleClass="link-label"/>
+                        </HBox>
+
+                        <GridPane hgap="8">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="25"/>
+                                <ColumnConstraints percentWidth="25"/>
+                                <ColumnConstraints percentWidth="25"/>
+                                <ColumnConstraints percentWidth="25"/>
+                            </columnConstraints>
+
+                            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="0" styleClass="macro-tile">
+                                <Label text="Protein" styleClass="macro-name"/>
+                                <Label fx:id="proteinAmountLabel" text="120/160g" styleClass="macro-amount"/>
+                                <ProgressBar fx:id="proteinProgressBar" progress="0.75" prefWidth="55" styleClass="blue-bar"/>
+                                <Label text="75%" styleClass="blue-percent"/>
+                            </VBox>
+
+                            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="1" styleClass="macro-tile">
+                                <Label text="Carbs" styleClass="macro-name"/>
+                                <Label fx:id="carbsAmountLabel" text="180/250g" styleClass="macro-amount"/>
+                                <ProgressBar fx:id="carbsProgressBar" progress="0.72" prefWidth="55" styleClass="green-bar"/>
+                                <Label text="72%" styleClass="green-percent"/>
+                            </VBox>
+
+                            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="2" styleClass="macro-tile">
+                                <Label text="Fat" styleClass="macro-name"/>
+                                <Label fx:id="fatAmountLabel" text="60/80g" styleClass="macro-amount"/>
+                                <ProgressBar fx:id="fatProgressBar" progress="0.75" prefWidth="55" styleClass="orange-bar"/>
+                                <Label text="75%" styleClass="orange-percent"/>
+                            </VBox>
+
+                            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="3" styleClass="macro-tile">
+                                <Label text="Fiber" styleClass="macro-name"/>
+                                <Label fx:id="fiberAmountLabel" text="25/30g" styleClass="macro-amount"/>
+                                <ProgressBar fx:id="fiberProgressBar" progress="0.83" prefWidth="55" styleClass="purple-bar"/>
+                                <Label text="83%" styleClass="purple-percent"/>
+                            </VBox>
+                        </GridPane>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="42" styleClass="bottom-nav">
+            <VBox alignment="CENTER" spacing="3"
+                  onMouseClicked="#openProfile"
+                  styleClass="nav-clickable">
+                <Label text="◯" styleClass="nav-icon"/>
+                <Label text="Profile" styleClass="nav-text"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="3"
+                  onMouseClicked="#openWorkouts"
+                  styleClass="nav-clickable">
+                <Label text="✚" styleClass="nav-icon-active"/>
+                <Label text="Workouts" styleClass="nav-text-active"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="3"
+                  onMouseClicked="#openSettings"
+                  styleClass="nav-clickable">
+                <Label text="⊙" styleClass="nav-icon"/>
+                <Label text="Settings" styleClass="nav-text"/>
+            </VBox>
+        </HBox>
+    </bottom>
+</BorderPane>
