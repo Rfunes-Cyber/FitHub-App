@@ -12,19 +12,25 @@ import java.util.ArrayList;
 
 public class ExerciseFileLoader {
 
-    // Location of the CSV when it is included with the application
+    // Location of the CSV inside the application resources
     private static final String RESOURCE_PATH =
             "/workout/exercises.csv";
 
     private ExerciseFileLoader() {
     }
 
-    // Loads exercises that match the selected muscles and equipment
+    // Loads exercises matching the selected muscles and equipment
     public static ArrayList<Exercise> loadExercises(
             ArrayList<String> selectedMuscleGroups,
             String selectedEquipmentType) {
 
-        ArrayList<Exercise> matchingExercises = new ArrayList<>();
+        validateSelections(
+                selectedMuscleGroups,
+                selectedEquipmentType
+        );
+
+        ArrayList<Exercise> matchingExercises =
+                new ArrayList<>();
 
         try (BufferedReader reader = openCsvReader()) {
 
@@ -34,22 +40,23 @@ public class ExerciseFileLoader {
             while ((line = reader.readLine()) != null) {
                 lineNumber++;
 
-                // Skips the column headings
+                // Skip the CSV headings
                 if (lineNumber == 1) {
                     continue;
                 }
 
-                // Skips blank lines
+                // Skip empty rows
                 if (line.isBlank()) {
                     continue;
                 }
 
                 String[] values = line.split(",", -1);
 
-                // Every row must contain six values
                 if (values.length != 6) {
                     throw new IllegalArgumentException(
-                            "Invalid CSV format on line " + lineNumber + "."
+                            "Invalid CSV format on line "
+                                    + lineNumber
+                                    + "."
                     );
                 }
 
@@ -62,12 +69,19 @@ public class ExerciseFileLoader {
                 int reps;
 
                 try {
-                    sets = Integer.parseInt(values[4].trim());
-                    reps = Integer.parseInt(values[5].trim());
+                    sets = Integer.parseInt(
+                            values[4].trim()
+                    );
+
+                    reps = Integer.parseInt(
+                            values[5].trim()
+                    );
+
                 } catch (NumberFormatException exception) {
                     throw new IllegalArgumentException(
                             "Invalid sets or reps on CSV line "
-                                    + lineNumber + "."
+                                    + lineNumber
+                                    + "."
                     );
                 }
 
@@ -81,19 +95,21 @@ public class ExerciseFileLoader {
                         equipmentType.equalsIgnoreCase(
                                 selectedEquipmentType
                         )
-                                || equipmentType.equalsIgnoreCase("Both");
+                                || equipmentType.equalsIgnoreCase(
+                                "Both"
+                        );
 
                 if (muscleMatches && equipmentMatches) {
-                    Exercise exercise = new Exercise(
-                            workoutName,
-                            exerciseName,
-                            muscleGroup,
-                            equipmentType,
-                            sets,
-                            reps
+                    matchingExercises.add(
+                            new Exercise(
+                                    workoutName,
+                                    exerciseName,
+                                    muscleGroup,
+                                    equipmentType,
+                                    sets,
+                                    reps
+                            )
                     );
-
-                    matchingExercises.add(exercise);
                 }
             }
 
@@ -107,13 +123,66 @@ public class ExerciseFileLoader {
         return matchingExercises;
     }
 
-    // Checks a muscle group without requiring matching capitalization
+    // Returns only the names used by the preference dropdown
+    public static ArrayList<String> loadExerciseNames(
+            ArrayList<String> selectedMuscleGroups,
+            String selectedEquipmentType) {
+
+        ArrayList<Exercise> exercises =
+                loadExercises(
+                        selectedMuscleGroups,
+                        selectedEquipmentType
+                );
+
+        ArrayList<String> exerciseNames =
+                new ArrayList<>();
+
+        for (Exercise exercise : exercises) {
+            String exerciseName = exercise.getName();
+
+            if (!containsNameIgnoreCase(
+                    exerciseNames,
+                    exerciseName
+            )) {
+                exerciseNames.add(exerciseName);
+            }
+        }
+
+        return exerciseNames;
+    }
+
+    // Finds one matching exercise by its name
+    public static Exercise findExerciseByName(
+            ArrayList<Exercise> exercises,
+            String exerciseName) {
+
+        if (exercises == null
+                || exerciseName == null
+                || exerciseName.isBlank()) {
+
+            return null;
+        }
+
+        for (Exercise exercise : exercises) {
+            if (exercise.getName().equalsIgnoreCase(
+                    exerciseName
+            )) {
+                return exercise;
+            }
+        }
+
+        return null;
+    }
+
+    // Checks whether a selected muscle matches the CSV value
     private static boolean containsIgnoreCase(
             ArrayList<String> selectedMuscleGroups,
             String muscleGroup) {
 
         for (String selectedGroup : selectedMuscleGroups) {
-            if (selectedGroup.equalsIgnoreCase(muscleGroup)) {
+            if (selectedGroup.equalsIgnoreCase(
+                    muscleGroup
+            )) {
                 return true;
             }
         }
@@ -121,13 +190,53 @@ public class ExerciseFileLoader {
         return false;
     }
 
-    // Attempts to load the CSV from the application resources first
-    private static BufferedReader openCsvReader() throws IOException {
+    // Prevents duplicate names in the preference dropdown
+    private static boolean containsNameIgnoreCase(
+            ArrayList<String> exerciseNames,
+            String exerciseName) {
+
+        for (String existingName : exerciseNames) {
+            if (existingName.equalsIgnoreCase(
+                    exerciseName
+            )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // Validates the filter information
+    private static void validateSelections(
+            ArrayList<String> selectedMuscleGroups,
+            String selectedEquipmentType) {
+
+        if (selectedMuscleGroups == null
+                || selectedMuscleGroups.isEmpty()) {
+
+            throw new IllegalArgumentException(
+                    "Select at least one muscle group."
+            );
+        }
+
+        if (selectedEquipmentType == null
+                || selectedEquipmentType.isBlank()) {
+
+            throw new IllegalArgumentException(
+                    "Select Home Workout or Gym Access."
+            );
+        }
+    }
+
+    // Tries the packaged resource first
+    private static BufferedReader openCsvReader()
+            throws IOException {
 
         InputStream inputStream =
-                ExerciseFileLoader.class.getResourceAsStream(
-                        RESOURCE_PATH
-                );
+                ExerciseFileLoader.class
+                        .getResourceAsStream(
+                                RESOURCE_PATH
+                        );
 
         if (inputStream != null) {
             return new BufferedReader(
@@ -135,9 +244,11 @@ public class ExerciseFileLoader {
             );
         }
 
-        // Backup location used while running directly from IntelliJ
+        // Backup location while running from IntelliJ
         Path csvPath = Path.of(
                 "src",
+                "main",
+                "resources",
                 "workout",
                 "exercises.csv"
         );
