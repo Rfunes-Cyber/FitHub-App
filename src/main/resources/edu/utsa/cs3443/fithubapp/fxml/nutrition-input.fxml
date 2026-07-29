@@ -12,18 +12,24 @@
         <ToggleGroup fx:id="genderGroup"/>
     </fx:define>
 
-    <ImageView fitHeight="960" fitWidth="540" preserveRatio="false">
+    <ImageView fitHeight="960" fitWidth="1200" layoutX="-350" layoutY="0" preserveRatio="false">
         <image><Image url="@../images/nutrition-background.jpeg"/></image>
     </ImageView>
     <AnchorPane prefHeight="960" prefWidth="540" styleClass="nutrition-overlay"/>
 
-    <Text layoutX="88" layoutY="72" text="Welcome to " styleClass="nutrition-welcome"/>
-    <Text layoutX="285" layoutY="72" text="FitHub!" styleClass="nutrition-brand"/>
-    <Label layoutX="123" layoutY="88" text="Please enter your information below" styleClass="nutrition-subtitle-strong"/>
+    <VBox layoutX="0" layoutY="40" prefWidth="540" alignment="CENTER" spacing="8">
+         <HBox alignment="CENTER" spacing="8">
+             <Text text="Welcome to" styleClass="nutrition-welcome"/>
+             <Text text="Fit" styleClass="nutrition-brand"/>
+             <Text text="Hub!" styleClass="nutrition-brand-white"/>
+        </HBox>
+
+        <Label text="Please enter your information below" styleClass="nutrition-subtitle-strong"/>
+    </VBox>
 
     <HBox layoutX="86" layoutY="184" prefWidth="368" alignment="CENTER_LEFT" spacing="14" styleClass="underlined-row">
         <ImageView fitHeight="24" fitWidth="24" preserveRatio="true"><image><Image url="@../images/nutrition-icons/age.png"/></image></ImageView>
-        <TextField fx:id="ageField" prefWidth="325" promptText="Age" styleClass="nutrition-line-field"/>
+        <TextField fx:id="ageField" prefWidth="325" promptText="Age" styleClass="nutrition-line-field" style="-fx-padding: 3 8 3 -4;"/>
     </HBox>
 
     <HBox layoutX="86" layoutY="275" prefWidth="368" alignment="CENTER_LEFT" spacing="14" styleClass="underlined-row">
@@ -50,8 +56,11 @@
         <TextField fx:id="weightField" prefWidth="325" promptText="Weight (lb)" styleClass="nutrition-line-field"/>
     </HBox>
 
-    <HBox layoutX="82" layoutY="550" prefWidth="376" alignment="CENTER" spacing="8">
-        <ImageView fitHeight="20" fitWidth="20" preserveRatio="true"><image><Image url="@../images/nutrition-icons/error.png"/></image></ImageView>
+    <HBox fx:id="errorBox" layoutX="82" layoutY="550" prefWidth="376" alignment="CENTER" spacing="8" visible="false" managed="false">
+        <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+            <image> <Image url="@../images/nutrition-icons/error.png"/> </image>
+        </ImageView>
+
         <Label fx:id="messageLabel" prefWidth="340" alignment="CENTER_LEFT" wrapText="true" styleClass="message-label"/>
     </HBox>
 
