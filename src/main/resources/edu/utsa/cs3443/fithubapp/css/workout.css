@@ -1,0 +1,286 @@
+/* Header used on each workout screen */
+.workout-header {
+    -fx-background-color: white;
+    -fx-background-radius: 35px;
+    -fx-border-color: #d9d9d9;
+    -fx-border-radius: 35px;
+    -fx-padding: 10px 45px;
+}
+
+/* Optional exercise dropdown */
+.workout-combo-box {
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+}
+
+/* Home and Gym buttons */
+.equipment-button {
+    -fx-background-color: white;
+    -fx-border-color: #007BFF;
+    -fx-border-width: 2px;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+    -fx-text-fill: #007BFF;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+    -fx-graphic-text-gap: 12px;
+    -fx-cursor: hand;
+}
+
+.equipment-button:selected {
+    -fx-background-color: #DCEEFF;
+    -fx-border-color: #007BFF;
+    -fx-border-width: 3px;
+    -fx-text-fill: #007BFF;
+}
+
+.equipment-button:hover {
+    -fx-background-color: #EAF4FF;
+}
+
+.equipment-button:selected:hover {
+    -fx-background-color: #CBE4FF;
+}
+
+/* Muscle target buttons */
+.muscle-button {
+    -fx-background-color: white;
+    -fx-border-color: #007BFF;
+    -fx-border-width: 2px;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+    -fx-text-fill: #007BFF;
+    -fx-font-size: 15px;
+    -fx-alignment: center;
+    -fx-graphic-text-gap: 12px;
+    -fx-padding: 6px 12px;
+    -fx-cursor: hand;
+}
+
+/* Hides the default checkbox square */
+.muscle-button > .box {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.muscle-button > .box > .mark {
+    -fx-background-color: transparent;
+}
+
+.muscle-button:selected {
+    -fx-background-color: #DCEEFF;
+    -fx-border-color: #007BFF;
+    -fx-border-width: 3px;
+    -fx-text-fill: #007BFF;
+}
+
+.muscle-button:hover {
+    -fx-background-color: #EAF4FF;
+}
+
+.muscle-button:selected:hover {
+    -fx-background-color: #CBE4FF;
+}
+
+/* Recommended workout card */
+.recommended-workout-card {
+    -fx-background-color: white;
+    -fx-background-radius: 22px;
+    -fx-padding: 22px 18px;
+}
+
+/* Recommended exercise list */
+.workout-list {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 2px;
+}
+
+.workout-list .list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #222222;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 12px;
+    -fx-border-color: transparent transparent #E0E0E0 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.workout-list .list-cell:empty {
+    -fx-background-color: white;
+    -fx-border-width: 0;
+}
+
+.workout-list .list-cell:selected {
+    -fx-background-color: #EAF4FF;
+    -fx-text-fill: #007BFF;
+}
+
+/* Generate Workout button */
+.generate-workout-button {
+    -fx-background-color: #007BFF;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+}
+
+.generate-workout-button:hover {
+    -fx-background-color: #006FE6;
+}
+
+/* Main blue buttons */
+.primary-workout-button {
+    -fx-background-color: #007BFF;
+    -fx-background-radius: 12px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.primary-workout-button:hover {
+    -fx-background-color: #006FE6;
+}
+
+.primary-workout-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+/* White outline buttons */
+.secondary-workout-button {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-border-color: #007BFF;
+    -fx-border-radius: 12px;
+    -fx-border-width: 2px;
+    -fx-text-fill: #007BFF;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
+.secondary-workout-button:hover {
+    -fx-background-color: #EAF4FF;
+}
+
+.secondary-workout-button:disabled {
+    -fx-opacity: 0.5;
+}
+
+/* Back buttons */
+.link-workout-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #007BFF;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Older current-exercise card style */
+.exercise-instruction-card {
+    -fx-background-color: white;
+    -fx-background-radius: 18px;
+    -fx-border-color: #007BFF;
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.5px;
+}
+
+/* Workout In Progress main card */
+.progress-workout-card {
+    -fx-background-color: white;
+    -fx-background-radius: 22px;
+    -fx-padding: 18px 20px;
+}
+
+/* Current exercise card */
+.current-exercise-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 18px;
+    -fx-border-color: #007BFF;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 18px;
+    -fx-padding: 18px;
+}
+
+/* Upcoming exercises card */
+.upcoming-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 18px;
+    -fx-border-color: #D9D9D9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 18px;
+    -fx-padding: 14px;
+}
+
+/* Upcoming exercise list */
+.upcoming-exercise-list {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-control-inner-background: #F8F8F8;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 0;
+}
+
+.upcoming-exercise-list .viewport {
+    -fx-background-color: transparent;
+}
+
+.upcoming-exercise-list .list-cell {
+    -fx-background-color: #F8F8F8;
+    -fx-text-fill: #222222;
+    -fx-font-size: 13px;
+    -fx-padding: 8px 10px;
+    -fx-border-color: transparent transparent #E5E5E5 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.upcoming-exercise-list .list-cell:empty {
+    -fx-background-color: #F8F8F8;
+    -fx-border-width: 0;
+}
+
+.upcoming-exercise-list .list-cell:selected {
+    -fx-background-color: #EAF4FF;
+    -fx-text-fill: #007BFF;
+}
+
+/* Progress bar */
+.workout-progress-bar {
+    -fx-accent: #00A8D6;
+}
+
+.workout-progress-bar > .track {
+    -fx-background-color: #E6E6E6;
+    -fx-background-radius: 10px;
+}
+
+.workout-progress-bar > .bar {
+    -fx-background-radius: 10px;
+    -fx-background-insets: 1px;
+}
+
+/* Go Back outline button */
+.link-outline-button {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-border-color: #007BFF;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-text-fill: #007BFF;
+    -fx-font-size: 15px;
+    -fx-cursor: hand;
+}
+
+.link-outline-button:hover {
+    -fx-background-color: #EAF4FF;
+}
+
+/* Divider lines */
+.separator .line {
+    -fx-border-color: #D4D4D4;
+    -fx-border-width: 1px 0 0 0;
+}

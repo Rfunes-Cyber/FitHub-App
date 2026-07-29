@@ -1,96 +1,624 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.utsa.cs3443.fithubapp.controller.WorkoutScreenController"
-            prefWidth="390" prefHeight="844"
-            minWidth="390" maxWidth="390"
-            minHeight="844" maxHeight="844"
-            stylesheets="@../css/fithub-mobile.css"
-            styleClass="phone-root">
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="edu.utsa.cs3443.fithubapp.controller.WorkoutController"
+           stylesheets="@../css/workout.css"
+           prefWidth="540"
+           prefHeight="960">
 
-    <top>
-        <VBox styleClass="phone-header">
-            <HBox alignment="CENTER_LEFT" styleClass="status-bar">
-                <Label text="9:41" styleClass="status-time"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label text="▮▮▮  ◔  ▰" styleClass="status-icons"/>
+    <!-- Background -->
+    <ImageView fitWidth="540"
+               fitHeight="960"
+               preserveRatio="false">
+        <image>
+            <Image url="@../images/workout-background.jpg"/>
+        </image>
+    </ImageView>
+
+    <!-- Dark overlay -->
+    <StackPane style="-fx-background-color: rgba(0, 0, 0, 0.35);"/>
+
+    <!-- Only one equipment choice can be selected -->
+    <fx:define>
+        <ToggleGroup fx:id="equipmentToggleGroup"/>
+    </fx:define>
+
+    <!-- ===================================================== -->
+    <!-- CHANGE WORKOUT SCREEN -->
+    <!-- ===================================================== -->
+
+    <VBox fx:id="changeWorkoutPane"
+          alignment="TOP_CENTER"
+          spacing="12"
+          maxWidth="510"
+          maxHeight="940"
+          style="-fx-background-color: transparent;">
+
+        <!-- Header -->
+        <VBox alignment="CENTER"
+              spacing="1"
+              prefWidth="300"
+              maxWidth="300"
+              styleClass="workout-header">
+
+            <TextFlow textAlignment="CENTER">
+                <Text text="Fit"
+                      style="-fx-fill: #007BFF;
+                             -fx-font-size: 24px;
+                             -fx-font-weight: bold;"/>
+
+                <Text text="Hub"
+                      style="-fx-fill: black;
+                             -fx-font-size: 24px;
+                             -fx-font-weight: bold;"/>
+            </TextFlow>
+
+            <Label text="Change Workout"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   style="-fx-font-size: 15px;
+                          -fx-font-weight: bold;"/>
+        </VBox>
+
+        <!-- Main card -->
+        <VBox alignment="TOP_CENTER"
+              spacing="9"
+              prefWidth="460"
+              maxWidth="460"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 18;
+                     -fx-padding: 16 22 16 22;">
+
+            <Label text="What type of workout do you want?"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="410"
+                   style="-fx-font-size: 20px;
+                          -fx-font-weight: bold;"/>
+
+            <Label text="Do you have at-home workout equipment&#10;or access to a gym?"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="410"
+                   style="-fx-font-size: 13px;
+                          -fx-text-fill: #555555;"/>
+
+            <!-- Equipment choices -->
+            <HBox alignment="CENTER" spacing="25">
+
+                <ToggleButton fx:id="homeWorkoutButton"
+                              text="Home Workout"
+                              toggleGroup="$equipmentToggleGroup"
+                              prefWidth="190"
+                              prefHeight="78"
+                              contentDisplay="LEFT"
+                              graphicTextGap="8"
+                              styleClass="equipment-button">
+
+                    <graphic>
+                        <ImageView fitWidth="60"
+                                   fitHeight="60"
+                                   preserveRatio="true"
+                                   smooth="true">
+                            <image>
+                                <Image url="@../images/workout-icons/home.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+
+                <ToggleButton fx:id="gymAccessButton"
+                              text="Gym Access"
+                              toggleGroup="$equipmentToggleGroup"
+                              prefWidth="190"
+                              prefHeight="78"
+                              contentDisplay="LEFT"
+                              graphicTextGap="10"
+                              styleClass="equipment-button">
+
+                    <graphic>
+                        <ImageView fitWidth="58"
+                                   fitHeight="58"
+                                   preserveRatio="true"
+                                   smooth="true">
+                            <image>
+                                <Image url="@../images/workout-icons/gym.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </ToggleButton>
+
             </HBox>
 
-            <HBox alignment="CENTER_LEFT" spacing="9" styleClass="brand-line">
-                <Label text="Workouts" styleClass="eyebrow"/>
-                <Label text="▮▮▮" styleClass="brand-mark"/>
-                <Label text="Fit" styleClass="brand-fit"/>
-                <Label text="Hub" styleClass="brand-hub"/>
+            <!-- Muscle target heading -->
+            <HBox alignment="CENTER" spacing="10">
+                <Separator prefWidth="75"/>
+
+                <Label text="Choose Muscle Target"
+                       alignment="CENTER"
+                       textAlignment="CENTER"
+                       style="-fx-font-size: 16px;"/>
+
+                <Separator prefWidth="75"/>
             </HBox>
 
-            <Label text="Workouts" styleClass="page-title"/>
-            <Label text="Choose a workout for today" styleClass="page-subtitle"/>
+            <!-- Back and Chest -->
+            <HBox alignment="CENTER" spacing="25">
+
+                <CheckBox fx:id="backCheckBox"
+                          text="Back"
+                          prefWidth="190"
+                          prefHeight="82"
+                          contentDisplay="LEFT"
+                          graphicTextGap="8"
+                          styleClass="muscle-button">
+
+                    <graphic>
+                        <ImageView fitWidth="68"
+                                   fitHeight="68"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/workout-icons/back.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </CheckBox>
+
+                <CheckBox fx:id="chestCheckBox"
+                          text="Chest"
+                          prefWidth="190"
+                          prefHeight="82"
+                          contentDisplay="LEFT"
+                          graphicTextGap="8"
+                          styleClass="muscle-button">
+
+                    <graphic>
+                        <ImageView fitWidth="68"
+                                   fitHeight="68"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/workout-icons/chest.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </CheckBox>
+
+            </HBox>
+
+            <!-- Arms and Legs -->
+            <HBox alignment="CENTER" spacing="25">
+
+                <CheckBox fx:id="armsCheckBox"
+                          text="Arms"
+                          prefWidth="190"
+                          prefHeight="82"
+                          contentDisplay="LEFT"
+                          graphicTextGap="8"
+                          styleClass="muscle-button">
+
+                    <graphic>
+                        <ImageView fitWidth="68"
+                                   fitHeight="68"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/workout-icons/arms.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </CheckBox>
+
+                <CheckBox fx:id="legsCheckBox"
+                          text="Legs"
+                          prefWidth="190"
+                          prefHeight="82"
+                          contentDisplay="LEFT"
+                          graphicTextGap="8"
+                          styleClass="muscle-button">
+
+                    <graphic>
+                        <ImageView fitWidth="68"
+                                   fitHeight="68"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/workout-icons/legs.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </CheckBox>
+
+            </HBox>
+
+            <!-- Shoulders and Core -->
+            <HBox alignment="CENTER" spacing="25">
+
+                <CheckBox fx:id="shouldersCheckBox"
+                          text="Shoulders"
+                          prefWidth="190"
+                          prefHeight="82"
+                          contentDisplay="LEFT"
+                          graphicTextGap="5"
+                          styleClass="muscle-button">
+
+                    <graphic>
+                        <ImageView fitWidth="68"
+                                   fitHeight="68"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/workout-icons/shoulders.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </CheckBox>
+
+                <CheckBox fx:id="coreCheckBox"
+                          text="Core"
+                          prefWidth="190"
+                          prefHeight="82"
+                          contentDisplay="LEFT"
+                          graphicTextGap="8"
+                          styleClass="muscle-button">
+
+                    <graphic>
+                        <ImageView fitWidth="68"
+                                   fitHeight="68"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../images/workout-icons/core.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </CheckBox>
+
+            </HBox>
+
+            <!-- Optional exercise heading -->
+            <HBox alignment="CENTER" spacing="10">
+                <Separator prefWidth="75"/>
+
+                <Label text="Select Exercise (Optional)"
+                       alignment="CENTER"
+                       textAlignment="CENTER"
+                       style="-fx-font-size: 14px;"/>
+
+                <Separator prefWidth="75"/>
+            </HBox>
+
+            <ComboBox fx:id="exerciseComboBox"
+                      promptText="Select exercises"
+                      prefWidth="390"
+                      prefHeight="42"
+                      styleClass="workout-combo-box"/>
+
+            <Button text="✦  Generate Workout"
+                    onAction="#handleGenerateWorkout"
+                    prefWidth="390"
+                    prefHeight="48"
+                    styleClass="generate-workout-button"/>
+
+            <Button text="← Back to Workout"
+                    onAction="#handleBackToWorkout"
+                    prefWidth="200"
+                    styleClass="link-workout-button"/>
+
         </VBox>
-    </top>
+    </VBox>
 
-    <center>
-        <VBox spacing="18" styleClass="screen-content">
+    <!-- ===================================================== -->
+    <!-- RECOMMENDED WORKOUT SCREEN -->
+    <!-- ===================================================== -->
 
-            <VBox spacing="10" styleClass="panel">
-                <Label text="Upper Body" styleClass="panel-title"/>
-                <Label text="Chest, shoulders, and arms" styleClass="profile-detail"/>
-                <Label text="Estimated time: 35 minutes" styleClass="profile-detail"/>
-                <Button text="Start Workout" styleClass="primary-button"/>
-            </VBox>
+    <VBox fx:id="recommendedWorkoutPane"
+          visible="false"
+          managed="false"
+          alignment="TOP_CENTER"
+          spacing="18"
+          maxWidth="440"
+          maxHeight="840"
+          style="-fx-background-color: transparent;">
 
-            <VBox spacing="10" styleClass="panel">
-                <Label text="Lower Body" styleClass="panel-title"/>
-                <Label text="Legs and glutes" styleClass="profile-detail"/>
-                <Label text="Estimated time: 40 minutes" styleClass="profile-detail"/>
-                <Button text="Start Workout" styleClass="primary-button"/>
-            </VBox>
+        <!-- Header -->
+        <VBox alignment="CENTER"
+              spacing="2"
+              prefWidth="300"
+              maxWidth="300"
+              styleClass="workout-header">
 
-            <VBox spacing="10" styleClass="panel">
-                <Label text="Full Body" styleClass="panel-title"/>
-                <Label text="Complete body workout" styleClass="profile-detail"/>
-                <Label text="Estimated time: 50 minutes" styleClass="profile-detail"/>
-                <Button text="Start Workout" styleClass="primary-button"/>
-            </VBox>
+            <TextFlow textAlignment="CENTER">
+                <Text text="Fit"
+                      style="-fx-fill: #007BFF;
+                             -fx-font-size: 24px;
+                             -fx-font-weight: bold;"/>
+
+                <Text text="Hub"
+                      style="-fx-fill: black;
+                             -fx-font-size: 24px;
+                             -fx-font-weight: bold;"/>
+            </TextFlow>
+
+            <Label text="Workout Tracker"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   style="-fx-font-size: 15px;
+                          -fx-font-weight: bold;"/>
+        </VBox>
+
+        <!-- Recommended workout card -->
+        <VBox alignment="TOP_CENTER"
+              spacing="12"
+              prefWidth="390"
+              maxWidth="390"
+              styleClass="recommended-workout-card">
+
+            <Label text="Recommended Workout for Today"
+                   wrapText="true"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="350"
+                   maxWidth="350"
+                   style="-fx-font-size: 18px;
+                          -fx-font-weight: bold;"/>
+
+            <Label fx:id="workoutNameLabel"
+                   text="Workout Name"
+                   wrapText="true"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="350"
+                   maxWidth="350"
+                   style="-fx-font-size: 21px;
+                          -fx-text-fill: #007BFF;
+                          -fx-font-weight: bold;"/>
+
+            <Label fx:id="workoutDurationLabel"
+                   text="Time &amp; Duration: 0 min"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="350"
+                   maxWidth="350"
+                   style="-fx-font-size: 14px;
+                          -fx-font-weight: bold;"/>
+
+            <ListView fx:id="exerciseListView"
+                      prefWidth="350"
+                      prefHeight="355"
+                      maxHeight="355"
+                      focusTraversable="false"
+                      styleClass="workout-list"/>
+
+            <Button fx:id="startWorkoutButton"
+                    text="Start Workout"
+                    onAction="#handleStartWorkout"
+                    disable="true"
+                    prefWidth="340"
+                    prefHeight="48"
+                    styleClass="primary-workout-button"/>
+
+            <Button text="Change Workout"
+                    onAction="#handleShowChangeWorkout"
+                    prefWidth="340"
+                    prefHeight="46"
+                    styleClass="secondary-workout-button"/>
 
         </VBox>
-    </center>
+    </VBox>
 
-    <bottom>
-        <HBox alignment="CENTER" spacing="42" styleClass="bottom-nav">
+    <!-- ===================================================== -->
+    <!-- WORKOUT IN PROGRESS SCREEN -->
+    <!-- ===================================================== -->
 
-            <VBox alignment="CENTER"
-                  spacing="3"
-                  onMouseClicked="#openProfile"
-                  styleClass="nav-clickable">
-                <Label text="◯" styleClass="nav-icon"/>
-                <Label text="Profile" styleClass="nav-text"/>
+    <VBox fx:id="workoutProgressPane"
+          visible="false"
+          managed="false"
+          alignment="TOP_CENTER"
+          spacing="14"
+          maxWidth="460"
+          maxHeight="920"
+          style="-fx-background-color: transparent;">
+
+        <!-- Progress header -->
+        <VBox alignment="CENTER"
+              spacing="2"
+              prefWidth="300"
+              maxWidth="300"
+              styleClass="workout-header">
+
+            <TextFlow textAlignment="CENTER">
+                <Text text="Fit"
+                      style="-fx-fill: #007BFF;
+                             -fx-font-size: 24px;
+                             -fx-font-weight: bold;"/>
+
+                <Text text="Hub"
+                      style="-fx-fill: black;
+                             -fx-font-size: 24px;
+                             -fx-font-weight: bold;"/>
+            </TextFlow>
+
+            <Label text="Workout In Progress"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   style="-fx-font-size: 15px;
+                          -fx-text-fill: #007BFF;
+                          -fx-font-weight: bold;"/>
+        </VBox>
+
+        <!-- Main progress card -->
+        <VBox alignment="TOP_CENTER"
+              spacing="10"
+              prefWidth="410"
+              maxWidth="410"
+              styleClass="progress-workout-card">
+
+            <Label fx:id="progressWorkoutNameLabel"
+                   text="Workout Name"
+                   wrapText="true"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="350"
+                   maxWidth="350"
+                   style="-fx-font-size: 20px;
+                          -fx-font-weight: bold;"/>
+
+            <Label fx:id="progressWorkoutDurationLabel"
+                   text="0 minute workout"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="350"
+                   maxWidth="350"
+                   style="-fx-font-size: 13px;
+                          -fx-text-fill: #666666;"/>
+
+            <!-- Elapsed timer -->
+            <Label fx:id="elapsedTimeLabel"
+                   text="Elapsed Time: 00:00"
+                   alignment="CENTER"
+                   textAlignment="CENTER"
+                   prefWidth="350"
+                   maxWidth="350"
+                   style="-fx-font-size: 15px;
+                          -fx-text-fill: #007BFF;
+                          -fx-font-weight: bold;"/>
+
+            <!-- Exercise count and progress percentage -->
+            <HBox alignment="CENTER"
+                  spacing="170"
+                  prefWidth="350">
+
+                <Label fx:id="progressExerciseCountLabel"
+                       text="Exercise 0 of 0"
+                       style="-fx-font-size: 12px;
+                              -fx-text-fill: #555555;"/>
+
+                <Label fx:id="progressPercentLabel"
+                       text="0%"
+                       style="-fx-font-size: 12px;
+                              -fx-text-fill: #007BFF;
+                              -fx-font-weight: bold;"/>
+            </HBox>
+
+            <ProgressBar fx:id="workoutProgressBar"
+                         progress="0.0"
+                         prefWidth="350"
+                         prefHeight="14"
+                         styleClass="workout-progress-bar"/>
+
+            <!-- Current exercise card -->
+            <VBox fx:id="exerciseInstructionPane"
+                  alignment="CENTER"
+                  spacing="10"
+                  prefWidth="350"
+                  prefHeight="180"
+                  styleClass="current-exercise-card">
+
+                <Label text="Current Exercise"
+                       style="-fx-font-size: 13px;
+                              -fx-text-fill: #777777;"/>
+
+                <Label fx:id="currentExerciseLabel"
+                       text="Current Exercise"
+                       wrapText="true"
+                       alignment="CENTER"
+                       textAlignment="CENTER"
+                       prefWidth="300"
+                       maxWidth="300"
+                       style="-fx-font-size: 24px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #222222;"/>
+
+                <Label fx:id="currentSetLabel"
+                       text="Set 0 of 0"
+                       alignment="CENTER"
+                       textAlignment="CENTER"
+                       prefWidth="300"
+                       maxWidth="300"
+                       style="-fx-font-size: 18px;
+                              -fx-text-fill: #007BFF;
+                              -fx-font-weight: bold;"/>
+
+                <Label text="Tap Complete Set when finished"
+                       style="-fx-font-size: 12px;
+                              -fx-text-fill: #888888;"/>
             </VBox>
 
-            <VBox alignment="CENTER"
-                  spacing="3"
-                  onMouseClicked="#openDashboard"
-                  styleClass="nav-clickable">
-                <Label text="✚" styleClass="nav-icon-active"/>
-                <Label text="Workouts" styleClass="nav-text-active"/>
+            <!-- Upcoming exercise card -->
+            <VBox fx:id="upcomingExercisesPane"
+                  alignment="TOP_CENTER"
+                  spacing="8"
+                  prefWidth="350"
+                  styleClass="upcoming-card">
+
+                <Label text="Upcoming Exercises"
+                       alignment="CENTER"
+                       textAlignment="CENTER"
+                       style="-fx-font-size: 14px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #222222;"/>
+
+                <ListView fx:id="upcomingExerciseListView"
+                          prefWidth="320"
+                          prefHeight="120"
+                          maxHeight="120"
+                          focusTraversable="false"
+                          styleClass="upcoming-exercise-list"/>
             </VBox>
 
-            <VBox alignment="CENTER"
-                  spacing="3"
-                  onMouseClicked="#openSettings"
-                  styleClass="nav-clickable">
-                <Label text="⊙" styleClass="nav-icon"/>
-                <Label text="Settings" styleClass="nav-text"/>
-            </VBox>
+            <!-- Complete and Pause -->
+            <HBox alignment="CENTER" spacing="14">
 
-        </HBox>
-    </bottom>
+                <Button fx:id="completeSetButton"
+                        text="Complete Set"
+                        onAction="#handleCompleteSet"
+                        disable="true"
+                        prefWidth="168"
+                        prefHeight="44"
+                        styleClass="primary-workout-button"/>
 
-</BorderPane>
+                <Button fx:id="pauseWorkoutButton"
+                        text="Pause"
+                        onAction="#handlePauseWorkout"
+                        disable="true"
+                        prefWidth="168"
+                        prefHeight="44"
+                        styleClass="secondary-workout-button"/>
+            </HBox>
+
+            <!-- Skip and Go Back -->
+            <HBox alignment="CENTER" spacing="14">
+
+                <Button fx:id="skipExerciseButton"
+                        text="Skip Exercise"
+                        onAction="#handleSkipExercise"
+                        disable="true"
+                        prefWidth="168"
+                        prefHeight="42"
+                        styleClass="secondary-workout-button"/>
+
+                <Button text="Go Back"
+                        onAction="#handleBackToRecommended"
+                        prefWidth="168"
+                        prefHeight="42"
+                        styleClass="link-outline-button"/>
+            </HBox>
+
+        </VBox>
+    </VBox>
+
+</StackPane>
