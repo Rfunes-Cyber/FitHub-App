@@ -22,7 +22,10 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Controls the workout screens, generates workouts,
+ * and tracks workout progress.
+ */
 public class WorkoutController {
 
     private static final String NO_PREFERENCE = "No preference";
