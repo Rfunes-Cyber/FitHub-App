@@ -42,7 +42,9 @@ public class DashboardController {
     @FXML private ProgressBar fiberProgressBar;
 
     @FXML private BarChart<String, Number> calorieHistoryChart;
-
+    /**
+     * Creates the lists used to store calorie and nutrition data.
+     */
     public DashboardController() {
         macroNutrients = new ArrayList<>();
         calorieHistory = new ArrayList<>();
@@ -81,7 +83,7 @@ public class DashboardController {
     }
 
     /**
-     * Sends the current model data to the JavaFX controls.
+     * Updates the dashboard labels, progress bars, and calorie chart.
      */
     private void updateDashboardView() {
         if (dashboardSummary == null) {
@@ -178,17 +180,23 @@ public class DashboardController {
         }
         return dashboardSummary.getCaloriesRemaining();
     }
-
+    /**
+     * Opens the Profile screen.
+     */
     @FXML
     private void openProfile(MouseEvent event) throws IOException {
         ScreenNavigator.open(event, "profile.fxml");
     }
-
+    /**
+     * Opens the Workout screen.
+     */
     @FXML
     private void openWorkouts(MouseEvent event) throws IOException {
         ScreenNavigator.open(event, "workout.fxml");
     }
-
+    /**
+     * Opens the Settings screen.
+     */
     @FXML
     private void openSettings(MouseEvent event) throws IOException {
         ScreenNavigator.open(event, "settings.fxml");
