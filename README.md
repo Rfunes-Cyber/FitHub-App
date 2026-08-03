@@ -41,7 +41,7 @@ FitHub allows users to:
 - Run the main method in FitHubApplication. 
 
 # UML Diagram
-- See 'FitHub-UML.png' in the root directory of the project.
+- See 'FitHub_Project_UML.puml' in the docs folder. 
 
 # Known Issues
 - The interface uses a fixed 540 × 960 window and is not responsive to resizing.
