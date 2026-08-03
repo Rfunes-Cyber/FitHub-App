@@ -41,7 +41,7 @@ FitHub allows users to:
 - Run the main method in FitHubApplication. 
 
 # UML Diagram
-- The UML diagram will be located inside the docs folder - docs/FitHub_Project_UML-FitHub_Application_UML_Class_Diagram.png
+- See 'FitHub-UML.png' in the root directory of the project.
 
 # Known Issues
 - The interface uses a fixed 540 × 960 window and is not responsive to resizing.
