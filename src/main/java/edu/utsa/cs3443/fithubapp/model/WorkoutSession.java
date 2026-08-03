@@ -1,23 +1,25 @@
 package edu.utsa.cs3443.fithubapp.model;
 
+//Tracks the user progress through active workout
+//Sesssion stores the current exercise and set, as ell number of completed sets, and workout is finihsed
 public class WorkoutSession {
 
-    // Stores the workout currently being completed
+    //Stores the workout currently being completed
     private Workout workout;
 
-    // Tracks which exercise the user is currently on
+    //Tracks which exercise the user is currently on
     private int currentExerciseIndex;
 
-    // Tracks which set the user is currently completing
+    //Tracks which set the user is currently completing
     private int currentSet;
 
-    // Tracks the total number of completed sets
+    //Tracks the total number of completed sets
     private int completedSets;
 
-    // Tracks whether the workout has been completed
+    //Tracks whether the workout has been completed
     private boolean workoutFinished;
 
-    // Creates a new active workout session
+    //Creates a new active workout session
     public WorkoutSession(Workout workout) {
 
         // Makes sure a workout was provided
@@ -27,14 +29,14 @@ public class WorkoutSession {
             );
         }
 
-        // Makes sure the workout contains at least one exercise
+        //Makes sure the workout contains at least one exercise
         if (workout.getExercises().isEmpty()) {
             throw new IllegalArgumentException(
                     "Workout must contain at least one exercise."
             );
         }
 
-        // Stores the workout and begins at the first exercise and first set
+        //Stores the workout and begins at the first exercise and first set
         this.workout = workout;
         this.currentExerciseIndex = 0;
         this.currentSet = 1;
@@ -42,12 +44,12 @@ public class WorkoutSession {
         this.workoutFinished = false;
     }
 
-    // Returns the active workout
+    //Returns the active workout
     public Workout getWorkout() {
         return workout;
     }
 
-    // Returns the exercise the user is currently completing
+    //Returns the exercise the user is currently completing
     public Exercise getCurrentExercise() {
 
         // Returns null when the entire workout is finished
@@ -58,56 +60,56 @@ public class WorkoutSession {
         return workout.getExercises().get(currentExerciseIndex);
     }
 
-    // Returns the position of the current exercise
+    //Returns the position of the current exercise
     public int getCurrentExerciseIndex() {
         return currentExerciseIndex;
     }
 
-    // Returns the current set number
+    //Returns the current set number
     public int getCurrentSet() {
         return currentSet;
     }
 
-    // Returns the number of completed sets
+    //Returns the number of completed sets
     public int getCompletedSets() {
         return completedSets;
     }
 
-    // Returns whether the workout has been completed
+    //Returns whether the workout has been completed
     public boolean isWorkoutFinished() {
         return workoutFinished;
     }
 
-    // Marks the current set as completed
+    //Marks the current set as completed
     public void completeSet() {
 
-        // Prevents changes after the workout has finished
+        //Prevents changes after the workout has finished
         if (workoutFinished) {
             throw new IllegalStateException(
                     "The workout has already been completed."
             );
         }
 
-        // Records the completed set
+        //Records the completed set
         completedSets++;
 
-        // Gets the exercise currently being completed
+        //Gets the exercise currently being completed
         Exercise currentExercise = getCurrentExercise();
 
-        // Moves to the next set when more sets remain
+        //Moves to the next set when more sets remain
         if (currentSet < currentExercise.getSets()) {
             currentSet++;
         } else {
 
-            // Moves to the next exercise after the final set
+            //Moves to the next exercise after the final set
             moveToNextExercise();
         }
     }
 
-    // Skips the remaining sets of the current exercise
+    //Skips the remaining sets of the current exercise
     public void skipExercise() {
 
-        // Prevents changes after the workout has finished
+        //Prevents changes after the workout has finished
         if (workoutFinished) {
             throw new IllegalStateException(
                     "The workout has already been completed."
@@ -117,10 +119,10 @@ public class WorkoutSession {
         moveToNextExercise();
     }
 
-    // Moves the session to the next exercise
+    //Moves the session to the next exercise
     private void moveToNextExercise() {
 
-        // Checks whether another exercise remains
+        //Checks whether another exercise remains
         if (currentExerciseIndex
                 < workout.getExercises().size() - 1) {
 
@@ -129,12 +131,12 @@ public class WorkoutSession {
 
         } else {
 
-            // Ends the workout after the final exercise
+            //Ends the workout after the final exercise
             workoutFinished = true;
         }
     }
 
-    // Calculates the total number of sets in the workout
+    //Calculates the total number of sets in the workout
     public int getTotalSets() {
 
         int totalSets = 0;
@@ -146,7 +148,7 @@ public class WorkoutSession {
         return totalSets;
     }
 
-    // Calculates workout progress as a percentage
+    //Calculates workout progress as a percentage
     public double getProgressPercent() {
 
         int totalSets = getTotalSets();
@@ -158,7 +160,7 @@ public class WorkoutSession {
         return ((double) completedSets / totalSets) * 100.0;
     }
 
-    // Returns information about the current workout session
+    //Returns information about the current workout session
     @Override
     public String toString() {
 
