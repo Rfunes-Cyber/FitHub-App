@@ -25,7 +25,6 @@ import java.util.List;
 
 //This class controls the workout feature of FitHub DONT DELETE
 //Controls and manages workout selection, excersices prefrence, time, and the workout screen
-
 public class WorkoutController {
 
     //Deafult dropdown when the user does not care for a excercise
