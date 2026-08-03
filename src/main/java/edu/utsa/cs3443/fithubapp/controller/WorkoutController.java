@@ -22,15 +22,15 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Controls the workout screens, generates workouts,
- * and tracks workout progress.
- */
+
+//This class controls the workout feature of FitHub DONT DELETE
+//Controls and manages workout selection, excersices prefrence, time, and the workout screen
 public class WorkoutController {
 
+    //Deafult dropdown when the user does not care for a excercise
     private static final String NO_PREFERENCE = "No preference";
 
-    // Main screen sections
+    //Main screen sections
     @FXML
     private VBox changeWorkoutPane;
 
@@ -128,14 +128,17 @@ public class WorkoutController {
     @FXML
     private Button skipExerciseButton;
 
+    //Stores the generated wrokout and the user current workout session
     private Workout generatedWorkout;
     private WorkoutSession activeSession;
 
+    //This tracks the workout time and checks if has been pasued
     private Timeline workoutTimer;
     private int elapsedSeconds;
     private boolean workoutPaused;
 
-    // Sets up the screen
+    //Sets up the screen
+    //clears dropdown choices of previous and restores the deafult selection
     @FXML
     private void initialize() {
         workoutPaused = false;
@@ -149,7 +152,7 @@ public class WorkoutController {
         showChangeWorkoutPane();
     }
 
-    // Updates the dropdown when equipment or muscles change
+    //Updates the dropdown when equipment or muscles changes
     private void setupPreferenceListeners() {
         equipmentToggleGroup.selectedToggleProperty().addListener(
                 (observable, oldValue, newValue) ->
@@ -187,7 +190,7 @@ public class WorkoutController {
         );
     }
 
-    // Loads exercises matching the selected options
+    //Loads exercises matching the selected options
     private void updateExercisePreferences() {
         String equipmentType = getSelectedEquipmentType();
 
@@ -219,14 +222,14 @@ public class WorkoutController {
         }
     }
 
-    // Resets the dropdown to its default option
+    //Resets the dropdown to its default option
     private void resetExercisePreferences() {
         exerciseComboBox.getItems().clear();
         exerciseComboBox.getItems().add(NO_PREFERENCE);
         exerciseComboBox.setValue(NO_PREFERENCE);
     }
 
-    // Creates the elapsed workout timer
+    //Creates a  workout timer
     private void setupWorkoutTimer() {
         workoutTimer = new Timeline(
                 new KeyFrame(
@@ -241,7 +244,7 @@ public class WorkoutController {
         workoutTimer.setCycleCount(Timeline.INDEFINITE);
     }
 
-    // Displays elapsed time as minutes and seconds
+    //Displays time as minutes and seconds
     private void updateTimerLabel() {
         int minutes = elapsedSeconds / 60;
         int seconds = elapsedSeconds % 60;
@@ -255,7 +258,7 @@ public class WorkoutController {
         );
     }
 
-    // Generates a workout from the selected options
+    //Generates a workout from the selected options and opens the recommended workout screen
     @FXML
     private void handleGenerateWorkout() {
         ArrayList<String> selectedMuscleGroups =
@@ -311,7 +314,7 @@ public class WorkoutController {
         }
     }
 
-    // Starts the workout and timer
+    //Starts the workout and timer
     @FXML
     private void handleStartWorkout() {
         if (generatedWorkout == null) {
@@ -357,7 +360,7 @@ public class WorkoutController {
         }
     }
 
-    // Completes the current set
+    //Completes the current set
     @FXML
     private void handleCompleteSet() {
         if (activeSession == null) {
@@ -376,7 +379,7 @@ public class WorkoutController {
         updateSessionDisplay();
     }
 
-    // Skips the current exercise
+    //Skips the current exercise
     @FXML
     private void handleSkipExercise() {
         if (activeSession == null) {
@@ -395,7 +398,7 @@ public class WorkoutController {
         updateSessionDisplay();
     }
 
-    // Pauses or resumes the workout and timer
+    //Pauses or resumes the workout and timer
     @FXML
     private void handlePauseWorkout() {
         if (activeSession == null
@@ -421,13 +424,13 @@ public class WorkoutController {
         }
     }
 
-    // Opens the Change Workout screen
+    //Opens the Change Workout screen
     @FXML
     private void handleShowChangeWorkout() {
         showChangeWorkoutPane();
     }
 
-    // Returns to the generated workout
+    //Returns to the generated workout
     @FXML
     private void handleBackToWorkout() {
         if (generatedWorkout == null) {
@@ -437,7 +440,7 @@ public class WorkoutController {
         showRecommendedWorkoutPane();
     }
 
-    // Returns from the active workout
+    //Returns from the active workout
     @FXML
     private void handleBackToRecommended() {
         if (workoutTimer != null) {
@@ -458,7 +461,7 @@ public class WorkoutController {
         }
     }
 
-    // Returns Home or Gym
+    //Returns Home or Gym
     private String getSelectedEquipmentType() {
         if (homeWorkoutButton.isSelected()) {
             return "Home";
@@ -471,7 +474,7 @@ public class WorkoutController {
         return null;
     }
 
-    // Returns all selected muscle groups
+    //Returns all selected muscle groups
     private ArrayList<String> getSelectedMuscleGroups() {
         ArrayList<String> muscleGroups =
                 new ArrayList<>();
@@ -503,7 +506,7 @@ public class WorkoutController {
         return muscleGroups;
     }
 
-    // Displays the generated workout
+    //Displays the generated workout
     private void displayGeneratedWorkout() {
         workoutNameLabel.setText(
                 generatedWorkout.getName()
@@ -530,7 +533,7 @@ public class WorkoutController {
         );
     }
 
-    // Displays workout information on the progress screen
+    //Displays workout information on the progress screen
     private void updateProgressWorkoutInformation() {
         progressWorkoutNameLabel.setText(
                 generatedWorkout.getName()
@@ -542,7 +545,7 @@ public class WorkoutController {
         );
     }
 
-    // Updates the current workout session
+    //Updates the current workout session
     private void updateSessionDisplay() {
         if (activeSession.isWorkoutFinished()) {
             showCompletedWorkout();
@@ -581,7 +584,7 @@ public class WorkoutController {
         updateUpcomingExercises(currentExercise);
     }
 
-    // Displays the completed workout state
+    //Displays the completed workout state
     private void showCompletedWorkout() {
         workoutTimer.stop();
 
@@ -621,7 +624,7 @@ public class WorkoutController {
         workoutPaused = false;
     }
 
-    // Updates the current exercise number
+    //Updates the current exercise number
     private void updateExerciseCount(
             Exercise currentExercise) {
 
@@ -643,7 +646,7 @@ public class WorkoutController {
         );
     }
 
-    // Displays the remaining exercises
+    //Displays the remaining exercises
     private void updateUpcomingExercises(
             Exercise currentExercise) {
 
@@ -678,7 +681,7 @@ public class WorkoutController {
         }
     }
 
-    // Formats an exercise for a list
+    //Formats the exercise for a list
     private String formatExercise(Exercise exercise) {
         return exercise.getName()
                 + "  •  "
@@ -688,7 +691,7 @@ public class WorkoutController {
                 + " reps";
     }
 
-    // Shows only the Change Workout screen
+    //Shows only the Change Workout screen
     private void showChangeWorkoutPane() {
         changeWorkoutPane.setVisible(true);
         changeWorkoutPane.setManaged(true);
@@ -700,7 +703,7 @@ public class WorkoutController {
         workoutProgressPane.setManaged(false);
     }
 
-    // Shows only the Recommended Workout screen
+    //Shows only the Recommended Workout screen
     private void showRecommendedWorkoutPane() {
         changeWorkoutPane.setVisible(false);
         changeWorkoutPane.setManaged(false);
@@ -712,7 +715,7 @@ public class WorkoutController {
         workoutProgressPane.setManaged(false);
     }
 
-    // Shows only the Workout In Progress screen
+    //Shows only the Workout In Progress screen
     private void showWorkoutProgressPane() {
         changeWorkoutPane.setVisible(false);
         changeWorkoutPane.setManaged(false);
@@ -724,7 +727,7 @@ public class WorkoutController {
         workoutProgressPane.setManaged(true);
     }
 
-    // Displays an error message
+    //Displays an error message
     private void showError(String message) {
         Alert alert =
                 new Alert(Alert.AlertType.ERROR);

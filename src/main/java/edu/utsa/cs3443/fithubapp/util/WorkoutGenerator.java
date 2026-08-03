@@ -5,16 +5,19 @@ import edu.utsa.cs3443.fithubapp.model.Workout;
 
 import java.util.ArrayList;
 
+// DONT DELETE
+//Create Workout objects based on muscle group equipment, and preferred exercise selected by the user
+//Also loads matching exercises from the CSV file and places it first when chosen
 public class WorkoutGenerator {
 
     private static final String NO_PREFERENCE =
             "No preference";
 
-    // Prevents WorkoutGenerator objects from being created
+    //Prevents WorkoutGenerator objects from being created
     private WorkoutGenerator() {
     }
 
-    // Original method preserved for WorkoutTest and other code
+    //Original method preserved for WorkoutTest and other code
     public static Workout generateWorkout(
             ArrayList<String> selectedMuscleGroups,
             String equipmentType) {
@@ -26,7 +29,7 @@ public class WorkoutGenerator {
         );
     }
 
-    // Generates a workout with an optional preferred exercise
+    //Generates a workout with an optional preferred exercise
     public static Workout generateWorkout(
             ArrayList<String> selectedMuscleGroups,
             String equipmentType,
@@ -37,6 +40,7 @@ public class WorkoutGenerator {
                 equipmentType
         );
 
+        //Creates name example like "Legs, back, Arm workout
         String workoutName =
                 String.join(
                         ", ",
@@ -44,7 +48,7 @@ public class WorkoutGenerator {
                 )
                         + " Workout";
 
-        // Estimates twenty minutes per muscle group
+        //Estimates twenty minutes per muscle group
         int durationMin =
                 selectedMuscleGroups.size() * 20;
 
@@ -53,7 +57,7 @@ public class WorkoutGenerator {
                         workoutName,
                         durationMin
                 );
-
+        //Stores each selected muscle group in the workout
         for (String muscleGroup
                 : selectedMuscleGroups) {
 
@@ -62,6 +66,7 @@ public class WorkoutGenerator {
             );
         }
 
+        // This loads the exercises that match what the user selected so muscles and equipment
         ArrayList<Exercise> matchingExercises =
                 ExerciseFileLoader.loadExercises(
                         selectedMuscleGroups,
@@ -80,14 +85,14 @@ public class WorkoutGenerator {
                         preferredExerciseName
                 );
 
-        // Add the preferred exercise first
+        //Adds the preferred exercise first
         if (preferredExercise != null) {
             workout.addExercise(
                     preferredExercise
             );
         }
 
-        // Add all remaining exercises
+        //Add all remaining exercises to workout
         for (Exercise exercise : matchingExercises) {
 
             if (exercise != preferredExercise) {
@@ -98,7 +103,7 @@ public class WorkoutGenerator {
         return workout;
     }
 
-    // Returns the preferred exercise when one was selected
+    //Returns the preferred exercise when one was selected
     private static Exercise getPreferredExercise(
             ArrayList<Exercise> matchingExercises,
             String preferredExerciseName) {
@@ -128,7 +133,10 @@ public class WorkoutGenerator {
         return preferredExercise;
     }
 
-    // Validates the workout selections
+    //Validates the workout selections
+    //As well selectedMuscleGroups muscle groups selected by the user
+    //equipmentType selected equipment category
+    //IllegalArgumentException when a required selection is missing or invalid value
     private static void validateSelections(
             ArrayList<String> selectedMuscleGroups,
             String equipmentType) {

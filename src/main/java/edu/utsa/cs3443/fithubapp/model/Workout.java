@@ -2,6 +2,8 @@ package edu.utsa.cs3443.fithubapp.model;
 
 import java.util.ArrayList;
 
+//Represents a generated workout in the FitHub application.
+//A workout stores its name, estimated duration, selected muscle groups, and the exercises included in the workout.
 public class Workout {
 
     // Stores the complete generated workout
@@ -10,6 +12,10 @@ public class Workout {
     private ArrayList<String> muscleGroups;
     private ArrayList<Exercise> exercises;
 
+    //Creates a new workout with a empty muscle group list and exercise list
+    //has name of the workout
+    //duretaionMin estimated workout duration in min
+    //IllegalArgumentException when the name is empty or the duration is not positive
     public Workout(String name, int durationMin) {
 
         if (name == null || name.isBlank()) {

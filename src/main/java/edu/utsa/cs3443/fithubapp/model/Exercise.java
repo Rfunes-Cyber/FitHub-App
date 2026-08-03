@@ -1,5 +1,7 @@
 package edu.utsa.cs3443.fithubapp.model;
 
+// Represent one exercise loaded from the workout CSV file
+//Each exercise stores it workout category name, targetd muscle group, equipment type, num of sets, and num of reps
 public class Exercise {
 
     // Information loaded from the CSV file
@@ -10,6 +12,13 @@ public class Exercise {
     private int sets;
     private int reps;
 
+    // Creates an exercise using information loaded from the CSV file.
+    //workoutName workout category connected to the exercise
+    //name name of the exercise
+    //muscleGroup muscle group targeted by the exercise
+    //equipmentType required equipment category
+    //sets number of sets and reps for number of reps per set
+    // IllegalArgumentException when text values are empty or sets and repetitions are not positive
     public Exercise(
             String workoutName,
             String name,
@@ -63,6 +72,7 @@ public class Exercise {
         this.reps = reps;
     }
 
+    //Returns everything needed for the workout screen
     public String getWorkoutName() {
         return workoutName;
     }
